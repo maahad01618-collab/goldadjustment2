@@ -8,14 +8,15 @@
 <title>GoldAdjustment</title>
 
 <!-- ============================================================ -->
-<!-- 💰 ADSTERRA POPUNDER AD (আপনার Adsterra কোড এখানে বসান)      -->
+<!-- 💰 ADSTERRA POPUNDER AD — এখানে আপনার Popunder Script বসান  -->
 <!-- ============================================================ -->
-<!-- নিচের লাইনের কমেন্ট সরিয়ে আপনার Adsterra Popunder Script বসান -->
+<!-- নিচের লাইনটি ডিলিট করে আপনার Adsterra Popunder কোড বসান -->
 <!-- <script type="text/javascript" src="//pl12345678.profitablecpmrate.com/xx/xx/xx/xxxxxxxx.js"></script> -->
 
 <!-- ============================================================ -->
-<!-- 💰 ADSTERRA SOCIAL BAR (আপনার Adsterra কোড এখানে বসান)      -->
+<!-- 💰 ADSTERRA SOCIAL BAR — এখানে আপনার Social Bar Script বসান -->
 <!-- ============================================================ -->
+<!-- নিচের লাইনটি ডিলিট করে আপনার Adsterra Social Bar কোড বসান -->
 <!-- <script type="text/javascript" src="//pl12345678.profitableratecpm.com/xx/xx/xx/xxxxxxxx.js"></script> -->
 
 <style>
@@ -191,7 +192,7 @@
         filter: brightness(0.95);
     }
 
-    /* ===== Footer with Exit button ===== */
+    /* ===== Footer ===== */
     .dashboard-footer {
         text-align: center;
         margin-top: 8px;
@@ -570,7 +571,7 @@
         font-weight: 600;
     }
 
-    /* ===== Ad Banner Slot ===== */
+    /* ===== Ad Slot ===== */
     .ad-slot {
         margin: 12px 0;
         padding: 8px;
@@ -618,7 +619,7 @@
     #toast.error { background: linear-gradient(145deg, #e53935, #b71c1c); }
     #toast.info { background: linear-gradient(145deg, #1e88e5, #0d47a1); }
 
-    /* ===== 🔢 CALCULATOR (3D) ===== */
+    /* ===== CALCULATOR ===== */
     .calculator {
         width: 100%;
         max-width: 340px;
@@ -633,7 +634,6 @@
         padding-bottom: 8px;
         border: 1px solid rgba(255,255,255,0.1);
     }
-
     .calculator .display-container {
         background: linear-gradient(145deg, #1e1e28, #2a2a38);
         padding: 18px 15px 8px 15px;
@@ -688,7 +688,6 @@
     .calculator .memory-btn:active {
         background-color: rgba(255,255,255,0.15);
     }
-
     .calculator .keypad {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -729,7 +728,6 @@
         color: #ffb74d;
         background: linear-gradient(145deg, #3a3a4a, #2a2a38);
     }
-
     .calculator .equal-btn {
         background: linear-gradient(145deg, #2196f3, #0d47a1);
         color: white;
@@ -756,14 +754,9 @@
         size: A5 landscape;
         margin: 0;
     }
-
     @media print {
-        body * {
-            visibility: hidden;
-        }
-        #printArea, #printArea * {
-            visibility: visible;
-        }
+        body * { visibility: hidden; }
+        #printArea, #printArea * { visibility: visible; }
         #printArea {
             position: absolute;
             left: 0;
@@ -779,15 +772,8 @@
             border-bottom: 2px solid #b8860b;
             padding-bottom: 6px;
         }
-        .print-header h2 {
-            color: #b8860b;
-            font-size: 20px;
-        }
-        .print-header .sub {
-            font-size: 11px;
-            color: #666;
-            margin-top: 3px;
-        }
+        .print-header h2 { color: #b8860b; font-size: 20px; }
+        .print-header .sub { font-size: 11px; color: #666; margin-top: 3px; }
         .print-content {
             font-size: 14px;
             line-height: 1.9;
@@ -804,11 +790,12 @@
         }
     }
 
-    /* ===== 🖥️ DESKTOP RESPONSIVE ===== */
+    /* ===== TABLET (≥ 700px) ===== */
     @media (min-width: 700px) {
         body { padding: 20px; }
         #appContainer { max-width: 640px; padding: 24px 20px; }
         .dashboard-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+        .dash-row-price-calc { grid-template-columns: 2fr 1fr; }
         .dash-btn { padding: 26px 10px; font-size: 15px; }
         .dash-btn .icon { font-size: 40px; }
         .feature-box { padding: 22px; }
@@ -816,6 +803,7 @@
         .btn, .print-btn { padding: 14px; font-size: 15px; }
     }
 
+    /* ===== DESKTOP (≥ 1000px) ===== */
     @media (min-width: 1000px) {
         body { padding: 28px; align-items: flex-start; padding-top: 40px; }
         #appContainer {
@@ -823,8 +811,12 @@
             padding: 32px 36px;
             border-radius: 28px;
             min-height: auto;
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.55),
+                0 0 0 1px rgba(255,255,255,0.75) inset,
+                0 -4px 20px rgba(0,0,0,0.08) inset;
         }
-        #appContainer .title { font-size: 30px; margin-bottom: 26px; }
+        #appContainer .title { font-size: 30px; margin-bottom: 26px; letter-spacing: 1px; }
         .dashboard-grid { grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 24px; }
         .dash-btn { padding: 32px 12px; font-size: 16px; border-radius: 20px; }
         .dash-btn .icon { font-size: 48px; margin-bottom: 12px; }
@@ -832,19 +824,25 @@
         .dash-btn.calc-mini { padding: 32px 12px; font-size: 14px; }
         .dash-btn.calc-mini .icon { font-size: 36px; }
         .admin-style-btn { padding: 18px; font-size: 17px; border-radius: 16px; }
+        .dashboard-footer { margin-top: 20px; padding-top: 20px; }
         .exit-btn-bottom { padding: 16px 32px; font-size: 17px; max-width: 300px; margin: 0 auto; }
+        .feature-header { margin-bottom: 22px; padding-bottom: 16px; }
+        .back-btn { padding: 12px 24px; font-size: 16px; border-radius: 14px; }
+        .feature-header .feature-name { font-size: 24px; }
         .feature-box { padding: 32px 36px; border-radius: 22px; }
         .feature-title { font-size: 22px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid rgba(184,134,11,0.15); }
         .row { gap: 8px 16px; margin-bottom: 10px; }
         .row label { font-size: 15px; width: 70px; }
         .row input { padding: 12px 14px; font-size: 16px; border-radius: 10px; max-width: 220px; }
-        .btn { padding: 16px; font-size: 17px; border-radius: 16px; max-width: 400px; }
-        .print-btn { padding: 14px 18px; font-size: 15px; max-width: 400px; }
-        .result-box { padding: 20px 22px; font-size: 15px; min-height: 80px; }
-        .price-result { padding: 28px; max-width: 500px; }
+        .karat-row { gap: 16px; margin-top: 12px; }
+        .karat-row input { padding: 14px 12px; font-size: 16px; }
+        .btn { padding: 16px; font-size: 17px; border-radius: 16px; margin: 14px 0 6px 0; max-width: 400px; }
+        .print-btn { padding: 14px 18px; font-size: 15px; max-width: 400px; margin: 14px 0 0 0; }
+        .result-box { padding: 20px 22px; font-size: 15px; line-height: 1.9; min-height: 80px; border-radius: 14px; margin-top: 14px; }
+        .price-result { padding: 28px; margin-top: 20px; border-radius: 20px; max-width: 500px; }
         .price-result .amount { font-size: 42px; }
         .calculator { max-width: 460px; margin: 20px auto; border-radius: 24px; }
-        .calculator button { padding: 20px 0; font-size: 20px; }
+        .calculator button { padding: 20px 0; font-size: 20px; border-radius: 12px; }
     }
 </style>
 </head>
@@ -878,13 +876,13 @@
 
         <div class="dashboard-grid">
             <div class="dash-btn" onclick="openFeature('main')">
-                <span class="icon">🪙</span> পাকা/জমা অ্যাডজাস্ট
+                <span class="icon">🪙</span> জমা হিসাব করুন
             </div>
             <div class="dash-btn" onclick="openFeature('pure')">
                 <span class="icon">✨</span> পাকা→টার্গেট
             </div>
             <div class="dash-btn" onclick="openFeature('any')">
-                <span class="icon">🔄</span> যেকোনো→টার্গেট
+                <span class="icon">🔄</span> যেকোনো↔টার্গেট
             </div>
             <div class="dash-btn" onclick="openFeature('gram')">
                 <span class="icon">⚖️</span> গ্রাম↔ভরি
@@ -899,8 +897,11 @@
             </div>
         </div>
 
-        <!-- ===== Ad Banner Slot (ড্যাশবোর্ডের নিচে) ===== -->
+        <!-- ============================================================ -->
+        <!-- 💰 ADSTERRA BANNER AD — ড্যাশবোর্ডের নিচে Banner কোড বসান     -->
+        <!-- ============================================================ -->
         <div class="ad-slot" id="adSlotDashboard">
+            <!-- এখানে আপনার Adsterra Banner কোড পেস্ট করুন -->
             <div class="ad-label">Advertisement</div>
         </div>
 
@@ -1032,7 +1033,6 @@
         <!-- FEATURE 6: LIVE GOLD RATE -->
         <div id="feature-liveRate" class="feature-box">
             <div class="feature-title">📈 আজকের সোনার দর</div>
-
             <div style="font-size:13px; color:#555; margin-bottom:10px; text-align:center;">
                 সর্বশেষ সোনার দর দেখতে নিচের লিংকে ক্লিক করুন
             </div>
@@ -1050,8 +1050,7 @@
                 💡 দর প্রায় প্রতিদিনই পরিবর্তন হয়।
             </div>
 
-            <!-- ===== Ad Banner Slot (Rate পেজের নিচে) ===== -->
-            <div class="ad-slot" id="adSlotRate" style="margin-top:12px;">
+            <div class="ad-slot" style="margin-top:12px;">
                 <div class="ad-label">Advertisement</div>
             </div>
         </div>
@@ -1260,7 +1259,7 @@
     }
 
     // ============================================================
-    // 📱 ফোনের ব্যাক বাটন হ্যান্ডেল (popstate)
+    // 📱 ফোনের ব্যাক বাটন হ্যান্ডেল
     // ============================================================
     window.addEventListener('popstate', function () {
         if (popstateLock) return;
@@ -1324,18 +1323,15 @@
     }
 
     function goBack() {
-        if (currentScreen === 'feature') {
-            showDashboard(false);
-            currentScreen = 'dashboard';
-            try { history.replaceState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
-        } else {
-            showDashboard(false);
-            try { history.replaceState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
-        }
+        showDashboard(false);
+        currentScreen = 'dashboard';
+        try {
+            history.replaceState({ screen: 'dashboard', ts: Date.now() }, '');
+        } catch (e) {}
     }
 
     // ============================================================
-    // 🖨️ প্রিন্ট ফাংশন
+    // 🖨️ প্রিন্ট
     // ============================================================
     function printResult(featureId) {
         if (featureId === 'main') calculateMain();
@@ -1715,7 +1711,7 @@
     }
 
     // ============================================================
-    // ⌨️ PC KEYBOARD SUPPORT
+    // ⌨️ PC KEYBOARD
     // ============================================================
     document.addEventListener('keydown', function(event) {
         const calcFeature = document.getElementById('feature-calc');
@@ -1731,53 +1727,28 @@
 
         const key = event.key;
 
-        if (/^[0-9]$/.test(key)) {
-            event.preventDefault(); calcInputDigit(key);
-        }
-        else if (key === '.' || key === ',') {
-            event.preventDefault(); calcInputDigit('.');
-        }
-        else if (key === '+') {
-            event.preventDefault(); calcInputOperator('+');
-        }
-        else if (key === '-') {
-            event.preventDefault(); calcInputOperator('-');
-        }
-        else if (key === '*' || key === 'x' || key === 'X') {
-            event.preventDefault(); calcInputOperator('*');
-        }
-        else if (key === '/') {
-            event.preventDefault(); calcInputOperator('/');
-        }
-        else if (key === '=' || key === 'Enter') {
-            event.preventDefault(); calcCalculateResult();
-        }
-        else if (key === 'Backspace') {
-            event.preventDefault(); calcBackspace();
-        }
-        else if (key === 'Escape') {
-            event.preventDefault(); goBack();
-        }
-        else if (key === 'Delete') {
-            event.preventDefault(); calcClearAll();
-        }
-        else if (key === '%') {
-            event.preventDefault(); calcInputOperator('%');
-        }
+        if (/^[0-9]$/.test(key)) { event.preventDefault(); calcInputDigit(key); }
+        else if (key === '.' || key === ',') { event.preventDefault(); calcInputDigit('.'); }
+        else if (key === '+') { event.preventDefault(); calcInputOperator('+'); }
+        else if (key === '-') { event.preventDefault(); calcInputOperator('-'); }
+        else if (key === '*' || key === 'x' || key === 'X') { event.preventDefault(); calcInputOperator('*'); }
+        else if (key === '/') { event.preventDefault(); calcInputOperator('/'); }
+        else if (key === '=' || key === 'Enter') { event.preventDefault(); calcCalculateResult(); }
+        else if (key === 'Backspace') { event.preventDefault(); calcBackspace(); }
+        else if (key === 'Escape') { event.preventDefault(); goBack(); }
+        else if (key === 'Delete') { event.preventDefault(); calcClearAll(); }
+        else if (key === '%') { event.preventDefault(); calcInputOperator('%'); }
     });
 
     // ============================================================
     // 🚀 INIT
     // ============================================================
     window.addEventListener('load', function() {
-        // Initial calculations
         calculateMain();
         calculatePureToTarget();
         calculateAnyToTarget();
         convertGramToVori();
         calculatePrice();
-        
-        // Setup history
         try {
             history.replaceState({ screen: 'dashboard', ts: Date.now() }, '');
         } catch (e) {}
