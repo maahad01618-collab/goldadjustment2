@@ -10,7 +10,7 @@
 
 ## 🌐 অ্যাপ লিংক
 
-👉 **[https://maahad01618-collab.github.io/goldadjustment2.0/](https://maahad01618-collab.github.io/goldadjustment2.0/)**
+👉[ **https://maahad01618-collab.github.io/goldadjustment2/**
 
 ---
 
