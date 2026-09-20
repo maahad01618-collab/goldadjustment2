@@ -1,5 +1,5 @@
 // GoldAdjustment Service Worker
-const CACHE_NAME = 'goldadjustment-v2';
+const CACHE_NAME = 'goldadjustment-v3';
 const APP_SHELL = [
     './',
     './index.html',
@@ -33,7 +33,6 @@ self.addEventListener('fetch', event => {
     const req = event.request;
     const url = new URL(req.url);
 
-    // Skip non-GET and cross-origin ad requests
     if (req.method !== 'GET') return;
     if (url.origin !== location.origin) return;
 
