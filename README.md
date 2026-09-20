@@ -10,7 +10,22 @@
 
 ## 🌐 অ্যাপ লিংক
 
-👉[ **https://maahad01618-collab.github.io/goldadjustment2/**
+👉 **[https://maahad01618-collab.github.io/goldadjustment2/](https://maahad01618-collab.github.io/goldadjustment2/)**
+
+---
+
+## 📸 অ্যাপের স্ক্রিনশট
+
+![GoldAdjustment Dashboard](screenshot.png)
+
+**অ্যাপের ফিচারসমূহ এক নজরে:**
+- 🪙 জমা হিসাব করুন
+- ✨ পাকা→টার্গেট
+- 🔄 যেকোনো↔টার্গেট
+- ⚖️ গ্রাম↔ভরি
+- 💰 দাম / মূল্য হিসাব
+- 🔢 ক্যালকুলেটর
+- 📈 আজকের সোনার দর
 
 ---
 
@@ -35,8 +50,3 @@
 4. হোম স্ক্রিনে **GoldAdjustment** আইকন দেখা যাবে
 5. এখন এটি একটি অ্যাপের মতো কাজ করবে — **অফলাইনেও চলবে** ✅
 
----
-
-## 📊 হিসাবের সূত্র (Formula)
-
-### ভরি ↔ পয়েন্ট
