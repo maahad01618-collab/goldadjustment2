@@ -58,7 +58,143 @@
 }
 </script>
 
-<script src="https://pl31431744.profitableratecpmnetwork.com/7c/56/2e/7c562eb9aa1f03a1a5de91a32ffafcbe.js"></script>
+<!-- ============================================================
+     AD REDIRECT BLOCKER
+     এড থাকবে, কিন্তু কোনো ক্লিকে নতুন পেজ/ট্যাব খুলবে না
+     ============================================================ -->
+<script>
+(function() {
+    'use strict';
+
+    var MY_HOST = location.hostname;
+
+    var AD_HOSTS = [
+        'profitableratecpmnetwork.com',
+        'profitableratecpm.com',
+        'highrevenueformat.com',
+        'adsterra.com',
+        'popads.net',
+        'popcash.net',
+        'propellerads.com',
+        'onclickalgo.com',
+        'onclickmax.com',
+        'clickadu.com',
+        'hilltopads.net',
+        'exoclick.com',
+        'juicyads.com',
+        'trafficjunky.com',
+        'adcash.com',
+        'mgid.com',
+        'revcontent.com',
+        'taboola.com',
+        'outbrain.com',
+        'bidvertiser.com',
+        'infolinks.com',
+        'adf.ly',
+        'linkvertise.com'
+    ];
+
+    function isAdUrl(url) {
+        if (!url) return false;
+        try {
+            var u = new URL(url, location.href);
+            var host = u.hostname.toLowerCase();
+            if (host === MY_HOST.toLowerCase()) return false;
+            if (u.protocol === 'data:' || u.protocol === 'javascript:' || u.protocol === 'blob:' || u.protocol === 'about:') return false;
+            for (var i = 0; i < AD_HOSTS.length; i++) {
+                if (host.indexOf(AD_HOSTS[i]) !== -1) return true;
+            }
+            return false;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // ১) window.open ব্লক
+    var _open = window.open;
+    window.open = function(url, name, features) {
+        try {
+            if (isAdUrl(url)) {
+                console.warn('[AdBlocker] window.open blocked:', url);
+                return null;
+            }
+        } catch (e) {}
+        return _open.apply(window, arguments);
+    };
+
+    // ২) ক্লিক ব্লক (capture phase)
+    document.addEventListener('click', function(e) {
+        var el = e.target;
+        while (el && el !== document) {
+            if (el.tagName === 'A' && el.href) {
+                if (isAdUrl(el.href)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    console.warn('[AdBlocker] Ad link blocked:', el.href);
+                    return false;
+                }
+                break;
+            }
+            el = el.parentNode;
+        }
+    }, true);
+
+    // ৩) mousedown / touchstart / pointerdown ব্লক
+    ['mousedown', 'touchstart', 'pointerdown'].forEach(function(evt) {
+        document.addEventListener(evt, function(e) {
+            var el = e.target;
+            while (el && el !== document) {
+                if (el.tagName === 'A' && el.href && isAdUrl(el.href)) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    return false;
+                }
+                el = el.parentNode;
+            }
+        }, true);
+    });
+
+    // ৪) নতুন iframe যোগ হলে sandbox দিন
+    function sandboxIframe(fr) {
+        try {
+            var src = fr.src || '';
+            if (src.indexOf('highrevenueformat') !== -1 ||
+                src.indexOf('profitableratecpm') !== -1 ||
+                src.indexOf('adsterra') !== -1 ||
+                isAdUrl(src)) {
+                fr.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+                fr.setAttribute('referrerpolicy', 'no-referrer');
+            }
+        } catch (e) {}
+    }
+
+    var mo = new MutationObserver(function(mutations) {
+        mutations.forEach(function(m) {
+            m.addedNodes && m.addedNodes.forEach(function(node) {
+                if (node.nodeType !== 1) return;
+                if (node.tagName === 'IFRAME') sandboxIframe(node);
+                if (node.querySelectorAll) {
+                    node.querySelectorAll('iframe').forEach(sandboxIframe);
+                }
+            });
+        });
+    });
+
+    function startObserver() {
+        mo.observe(document.documentElement, { childList: true, subtree: true });
+        document.querySelectorAll('iframe').forEach(sandboxIframe);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startObserver);
+    } else {
+        startObserver();
+    }
+
+})();
+</script>
 
 <style>
     * {
@@ -68,7 +204,6 @@
         font-family: 'Segoe UI', Tahoma, sans-serif;
     }
 
-    /* ===== DARK THEME BACKGROUND ===== */
     body {
         background: #1a1a2e;
         background-attachment: fixed;
@@ -101,7 +236,6 @@
         pointer-events: none;
     }
 
-    /* ===== MAIN APP CONTAINER (ডার্ক) ===== */
     #appContainer {
         display: block;
         max-width: 420px;
@@ -140,7 +274,6 @@
         margin-bottom: 16px;
     }
 
-    /* 3D DASHBOARD BUTTONS - DARK THEME */
     .dash-btn {
         background: linear-gradient(145deg, #2a2a3d, #1e1e2f);
         border: 1px solid rgba(212,160,23,0.25);
@@ -1015,17 +1148,32 @@
             </div>
         </div>
 
+        <!-- ===== ড্যাশবোর্ড এড স্লট (sandbox iframe এ) ===== -->
         <div class="ad-slot" id="adSlotDashboard">
-            <script>
-              atOptions = {
-                'key' : '34877ad21dca0c79fd4a05f281634112',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highrevenueformat.com/34877ad21dca0c79fd4a05f281634112/invoke.js"></script>
+            <iframe
+                title="ad"
+                scrolling="no"
+                sandbox="allow-scripts allow-same-origin"
+                referrerpolicy="no-referrer"
+                style="width:320px;height:50px;border:0;overflow:hidden;display:block;"
+                srcdoc='
+                    <!DOCTYPE html>
+                    <html>
+                    <head><meta charset="utf-8"><style>body{margin:0;padding:0;overflow:hidden;background:transparent;}</style></head>
+                    <body>
+                    <script type="text/javascript">
+                      atOptions = {
+                        "key" : "34877ad21dca0c79fd4a05f281634112",
+                        "format" : "iframe",
+                        "height" : 50,
+                        "width" : 320,
+                        "params" : {}
+                      };
+                    <\/script>
+                    <script type="text/javascript" src="https://www.highrevenueformat.com/34877ad21dca0c79fd4a05f281634112/invoke.js"><\/script>
+                    </body>
+                    </html>
+                '></iframe>
         </div>
 
         <div class="dashboard-footer">
@@ -1210,7 +1358,7 @@
             <div style="font-size:13px; color:#d4c9a8; margin-bottom:10px; text-align:center;">
                 সর্বশেষ সোনার দর দেখতে নিচের লিংকে ক্লিক করুন
             </div>
-            <a href="https://bajushub.com/" target="_self"
+            <a href="https://bajushub.com/" target="_blank" rel="noopener noreferrer"
                style="display:block; text-decoration:none; margin-bottom:10px;">
                 <div class="dash-btn" style="background: linear-gradient(145deg, #1b3a1b, #0d2a0d); border: 1px solid #2e7d32; padding: 18px 10px; box-shadow: 0 6px 0 #0a1a0a, 0 8px 16px rgba(46,125,50,0.3), 0 2px 4px rgba(255,255,255,0.05) inset;">
                     <span class="icon">🇧🇩</span>
@@ -1222,17 +1370,32 @@
                 💡 দর প্রায় প্রতিদিনই পরিবর্তন হয়।
             </div>
 
+            <!-- ===== Live Rate এড স্লট (sandbox iframe এ) ===== -->
             <div class="ad-slot" style="margin-top:12px;">
-                <script>
-                  atOptions = {
-                    'key' : 'e25c115b97bb54fba59674a89cc02108',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://www.highrevenueformat.com/e25c115b97bb54fba59674a89cc02108/invoke.js"></script>
+                <iframe
+                    title="ad2"
+                    scrolling="no"
+                    sandbox="allow-scripts allow-same-origin"
+                    referrerpolicy="no-referrer"
+                    style="width:100%;max-width:728px;height:90px;border:0;overflow:hidden;display:block;"
+                    srcdoc='
+                        <!DOCTYPE html>
+                        <html>
+                        <head><meta charset="utf-8"><style>body{margin:0;padding:0;overflow:hidden;background:transparent;}</style></head>
+                        <body>
+                        <script type="text/javascript">
+                          atOptions = {
+                            "key" : "e25c115b97bb54fba59674a89cc02108",
+                            "format" : "iframe",
+                            "height" : 90,
+                            "width" : 728,
+                            "params" : {}
+                          };
+                        <\/script>
+                        <script type="text/javascript" src="https://www.highrevenueformat.com/e25c115b97bb54fba59674a89cc02108/invoke.js"><\/script>
+                        </body>
+                        </html>
+                    '></iframe>
             </div>
         </div>
 
@@ -1916,8 +2079,6 @@
         } catch (e) {}
     });
 </script>
-
-<script src="https://pl31431747.profitableratecpmnetwork.com/d1/54/3e/d1543e854f6509956991eaaeec5f4bd0.js"></script>
 
 <script>
 if ('serviceWorker' in navigator) {
