@@ -15,9 +15,7 @@
 <title>Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর | GoldAdjustment</title>
 
 <meta name="description" content="আজকের সোনার দাম (Gold Price Today BD), ২১K ২২K ২৪K ক্যারেটের দাম, সোনার হিসাব ও ক্যারেট ক্যালকুলেটর। পাকা/জমা হিসাব, ভরি-আনা-রতি-পয়েন্ট, মজুরি হিসাব — সব এক অ্যাপে। ফ্রি ও অফলাইনেও কাজ করে।" />
-
 <meta name="keywords" content="gold price, gold price bd, gold price today, gold rate bd, bangladesh gold price, আজকের সোনার দাম, সোনার দাম, সোনার হিসাব, স্বর্ণ ক্যালকুলেটর, gold calculator bd, ক্যারেট হিসাব, ভরি আনা রতি, সোনার মজুরি, gold adjustment, gold karat calculator, সোনার দাম আজ, ২১ ক্যারেট সোনার দাম, ২২ ক্যারেট সোনার দাম" />
-
 <meta name="author" content="M.A.Ahad" />
 <meta name="robots" content="index, follow" />
 
@@ -52,15 +50,36 @@
 </script>
 
 <!-- ============================================================
-     AD REDIRECT BLOCKER (অপরিবর্তিত)
+     AD REDIRECT BLOCKER (আপনার এড হোয়াইটলিস্টেড)
      ============================================================ -->
 <script>
 (function() {
     'use strict';
+
     var MY_HOST = location.hostname;
-    var AD_HOSTS = [
-        'profitableratecpmnetwork.com','profitableratecpm.com','highrevenueformat.com','adsterra.com','popads.net','popcash.net','propellerads.com','onclickalgo.com','onclickmax.com','clickadu.com','hilltopads.net','exoclick.com','juicyads.com','trafficjunky.com','adcash.com','mgid.com','revcontent.com','taboola.com','outbrain.com','bidvertiser.com','infolinks.com','adf.ly','linkvertise.com'
+
+    var AD_WHITELIST = [
+        'highrevenueformat.com',
+        'highperformanceformat.com',
+        'profitableratecpmnetwork.com',
+        'profitableratecpm.com'
     ];
+
+    var AD_HOSTS = [
+        'adsterra.com','popads.net','popcash.net','propellerads.com',
+        'onclickalgo.com','onclickmax.com','clickadu.com','hilltopads.net',
+        'exoclick.com','juicyads.com','trafficjunky.com','adcash.com',
+        'mgid.com','revcontent.com','taboola.com','outbrain.com',
+        'bidvertiser.com','infolinks.com','adf.ly','linkvertise.com'
+    ];
+
+    function isWhitelisted(host) {
+        for (var i = 0; i < AD_WHITELIST.length; i++) {
+            if (host.indexOf(AD_WHITELIST[i]) !== -1) return true;
+        }
+        return false;
+    }
+
     function isAdUrl(url) {
         if (!url) return false;
         try {
@@ -68,320 +87,213 @@
             var host = u.hostname.toLowerCase();
             if (host === MY_HOST.toLowerCase()) return false;
             if (u.protocol === 'data:' || u.protocol === 'javascript:' || u.protocol === 'blob:' || u.protocol === 'about:') return false;
+            if (isWhitelisted(host)) return false;
             for (var i = 0; i < AD_HOSTS.length; i++) {
                 if (host.indexOf(AD_HOSTS[i]) !== -1) return true;
             }
             return false;
         } catch (e) { return false; }
     }
+
     var _open = window.open;
     window.open = function(url, name, features) {
-        try { if (isAdUrl(url)) { console.warn('[AdBlocker] window.open blocked:', url); return null; } } catch (e) {}
+        try { if (isAdUrl(url)) { console.warn('[AdBlocker] blocked:', url); return null; } } catch (e) {}
         return _open.apply(window, arguments);
     };
+
     document.addEventListener('click', function(e) {
         var el = e.target;
         while (el && el !== document) {
             if (el.tagName === 'A' && el.href) {
-                if (isAdUrl(el.href)) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
+                if (isAdUrl(el.href)) {
+                    e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+                    console.warn('[AdBlocker] blocked:', el.href);
+                    return false;
+                }
                 break;
             }
             el = el.parentNode;
         }
     }, true);
-    ['mousedown', 'touchstart', 'pointerdown'].forEach(function(evt) {
+
+    ['mousedown','touchstart','pointerdown'].forEach(function(evt) {
         document.addEventListener(evt, function(e) {
             var el = e.target;
             while (el && el !== document) {
-                if (el.tagName === 'A' && el.href && isAdUrl(el.href)) { e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation(); return false; }
+                if (el.tagName === 'A' && el.href && isAdUrl(el.href)) {
+                    e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
+                    return false;
+                }
                 el = el.parentNode;
             }
         }, true);
     });
-    function sandboxIframe(fr) {
-        try {
-            var src = fr.src || '';
-            if (src.indexOf('highrevenueformat') !== -1 || src.indexOf('profitableratecpm') !== -1 || src.indexOf('adsterra') !== -1 || isAdUrl(src)) {
-                fr.setAttribute('sandbox', 'allow-scripts allow-same-origin');
-                fr.setAttribute('referrerpolicy', 'no-referrer');
-            }
-        } catch (e) {}
-    }
+
     var mo = new MutationObserver(function(mutations) {
         mutations.forEach(function(m) {
             m.addedNodes && m.addedNodes.forEach(function(node) {
                 if (node.nodeType !== 1) return;
-                if (node.tagName === 'IFRAME') sandboxIframe(node);
-                if (node.querySelectorAll) { node.querySelectorAll('iframe').forEach(sandboxIframe); }
+                if (node.tagName === 'IFRAME') {
+                    try {
+                        var src = node.src || '';
+                        if (!isWhitelisted(src) && isAdUrl(src)) {
+                            node.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+                            node.setAttribute('referrerpolicy', 'no-referrer');
+                        }
+                    } catch (e) {}
+                }
+                if (node.querySelectorAll) {
+                    node.querySelectorAll('iframe').forEach(function(fr) {
+                        try {
+                            var s = fr.src || '';
+                            if (!isWhitelisted(s) && isAdUrl(s)) {
+                                fr.setAttribute('sandbox', 'allow-scripts allow-same-origin');
+                                fr.setAttribute('referrerpolicy', 'no-referrer');
+                            }
+                        } catch (e) {}
+                    });
+                }
             });
         });
     });
+
     function startObserver() {
         mo.observe(document.documentElement, { childList: true, subtree: true });
-        document.querySelectorAll('iframe').forEach(sandboxIframe);
     }
-    if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', startObserver); } else { startObserver(); }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startObserver);
+    } else {
+        startObserver();
+    }
 })();
 </script>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, sans-serif;
-        -webkit-tap-highlight-color: transparent;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
 
-    body {
-        background: #f0f2f5;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        padding: 0;
-        color: #333;
-    }
+    body { background: #f0f2f5; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 0; color: #333; }
 
-    .seo-h1 {
-        position: absolute;
-        left: -9999px;
-        top: -9999px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        opacity: 0;
-        pointer-events: none;
-    }
+    .seo-h1 { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
-    /* ====== APP HEADER ====== */
+    /* HEADER */
     .app-header {
-        background: #5e35b1;
-        color: #fff;
-        padding: 18px 16px 22px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 0 0 28px 28px;
-        box-shadow: 0 4px 12px rgba(94,53,177,0.3);
-        position: relative;
-        z-index: 10;
+        background: #5e35b1; color: #fff; padding: 18px 16px 22px 16px;
+        display: flex; align-items: center; justify-content: space-between;
+        border-radius: 0 0 28px 28px; box-shadow: 0 4px 12px rgba(94,53,177,0.3);
+        position: relative; z-index: 10;
     }
     .app-header .header-left { display: flex; align-items: center; gap: 12px; }
     .app-header .logo-circle {
-        width: 48px; height: 48px;
-        background: #fff;
-        border-radius: 50%;
+        width: 48px; height: 48px; background: #fff; border-radius: 50%;
         display: flex; align-items: center; justify-content: center;
-        font-size: 26px;
-        color: #5e35b1;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        font-size: 26px; color: #5e35b1; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     .app-header .header-text h1 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: 0.3px; }
     .app-header .header-text p { font-size: 13px; opacity: 0.85; margin-top: 2px; }
-    .app-header .header-right { font-size: 22px; cursor: pointer; opacity: 0.9; }
+    .app-header .header-right {
+        width: 42px; height: 42px; background: rgba(255,255,255,0.18);
+        border-radius: 50%; display: flex; align-items: center; justify-content: center;
+        font-size: 20px; cursor: pointer; transition: transform 0.15s, background 0.15s;
+        border: 1px solid rgba(255,255,255,0.3); color: #fff;
+    }
+    .app-header .header-right:active { transform: scale(0.9); background: rgba(255,255,255,0.35); }
 
-    /* ====== APP BODY ====== */
     #appContainer {
-        width: 100%;
-        max-width: 480px;
-        margin: 0 auto;
-        min-height: 100vh;
-        background: #f0f2f5;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        padding-bottom: 80px;
+        width: 100%; max-width: 480px; margin: 0 auto; min-height: 100vh;
+        background: #f0f2f5; position: relative;
+        display: flex; flex-direction: column; padding-bottom: 80px;
     }
+    .content-scroll { flex: 1; padding: 16px 14px 20px 14px; overflow-y: auto; }
 
-    .content-scroll {
-        flex: 1;
-        padding: 16px 14px 20px 14px;
-        overflow-y: auto;
-    }
-
-    /* ====== DASHBOARD ====== */
+    /* DASHBOARD */
     #dashboardScreen { display: block; }
-
     .primary-big-btn {
-        width: 100%;
-        background: #5e35b1;
-        color: #fff;
-        border: none;
-        border-radius: 20px;
-        padding: 20px 22px;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        font-size: 18px;
-        font-weight: 700;
-        box-shadow: 0 6px 16px rgba(94,53,177,0.35);
-        cursor: pointer;
+        width: 100%; background: #5e35b1; color: #fff; border: none;
+        border-radius: 20px; padding: 20px 22px; display: flex; align-items: center;
+        gap: 16px; font-size: 18px; font-weight: 700;
+        box-shadow: 0 6px 16px rgba(94,53,177,0.35); cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
-        margin-bottom: 24px;
-        text-align: left;
+        margin-bottom: 24px; text-align: left;
     }
     .primary-big-btn:active { transform: scale(0.98); box-shadow: 0 3px 8px rgba(94,53,177,0.3); }
     .primary-big-btn .icon-box {
-        width: 44px; height: 44px;
-        background: rgba(255,255,255,0.2);
-        border-radius: 12px;
-        display: flex; align-items: center; justify-content: center;
+        width: 44px; height: 44px; background: rgba(255,255,255,0.2);
+        border-radius: 12px; display: flex; align-items: center; justify-content: center;
         font-size: 24px;
     }
     .primary-big-btn .btn-text { flex: 1; }
 
-    .dashboard-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 12px;
-    }
+    .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
     .grid-card {
-        background: #ffffff;
-        border-radius: 16px;
-        padding: 16px 6px;
-        text-align: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-        cursor: pointer;
+        background: #ffffff; border-radius: 16px; padding: 16px 6px; text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 110px;
-        border: 1px solid rgba(0,0,0,0.02);
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        min-height: 110px; border: 1px solid rgba(0,0,0,0.02);
     }
     .grid-card:active { transform: scale(0.96); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-    .grid-card .card-icon {
-        font-size: 28px;
-        margin-bottom: 10px;
-        display: block;
-        line-height: 1;
-    }
-    .grid-card .card-label {
-        font-size: 12px;
-        font-weight: 600;
-        color: #444;
-        line-height: 1.4;
-        padding: 0 4px;
-    }
-    .grid-card.calc-card {
-        background: #5e35b1;
-        color: #fff;
-        box-shadow: 0 4px 12px rgba(94,53,177,0.3);
-    }
+    .grid-card .card-icon { font-size: 28px; margin-bottom: 10px; display: block; line-height: 1; }
+    .grid-card .card-label { font-size: 12px; font-weight: 600; color: #444; line-height: 1.4; padding: 0 4px; }
+    .grid-card.calc-card { background: #5e35b1; color: #fff; box-shadow: 0 4px 12px rgba(94,53,177,0.3); }
     .grid-card.calc-card .card-label { color: #fff; }
     .grid-card.calc-card .card-icon { font-size: 30px; }
 
     .ad-slot {
-        margin: 14px 0 0 0;
-        text-align: center;
-        min-height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
+        margin: 14px 0 0 0; text-align: center; min-height: 60px;
+        display: flex; align-items: center; justify-content: center;
+        overflow: hidden; background: #faf8ff;
+        border: 1px dashed #d0c4e8; border-radius: 12px; padding: 8px;
     }
 
-    .seo-keywords-footer {
-        font-size: 10px;
-        color: #999;
-        text-align: center;
-        margin-top: 20px;
-        line-height: 1.5;
-    }
+    .seo-keywords-footer { font-size: 10px; color: #999; text-align: center; margin-top: 20px; line-height: 1.5; }
 
-    /* ====== BOTTOM NAVIGATION ====== */
+    /* BOTTOM NAV */
     .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 480px;
-        background: #5e35b1;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        padding: 8px 0 12px 0;
-        border-radius: 24px 24px 0 0;
-        box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
-        z-index: 100;
+        position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+        width: 100%; max-width: 480px; background: #5e35b1;
+        display: flex; justify-content: space-around; align-items: center;
+        padding: 8px 0 12px 0; border-radius: 24px 24px 0 0;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.15); z-index: 100;
     }
     .nav-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-        color: rgba(255,255,255,0.6);
-        font-size: 11px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: color 0.2s;
-        padding: 4px 12px;
-        border-radius: 12px;
+        display: flex; flex-direction: column; align-items: center; gap: 3px;
+        color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 600;
+        cursor: pointer; transition: color 0.2s; padding: 4px 12px; border-radius: 12px;
     }
     .nav-item.active { color: #fff; }
     .nav-item .nav-icon { font-size: 20px; }
 
-    /* ====== FEATURE SCREEN ====== */
+    /* FEATURE SCREEN */
     #featureScreen { display: none; }
     #featureScreen.show { display: block; }
 
     .feature-header {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid #e0e0e0;
+        display: flex; align-items: center; gap: 12px;
+        margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #e0e0e0;
     }
     .back-btn {
-        background: #fff;
-        color: #5e35b1;
-        border: 1px solid #d0c4e8;
-        border-radius: 12px;
-        padding: 8px 18px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        transition: all 0.15s;
-        display: flex;
-        align-items: center;
-        gap: 6px;
+        background: #fff; color: #5e35b1; border: 1px solid #d0c4e8;
+        border-radius: 12px; padding: 8px 18px; font-size: 14px; font-weight: 600;
+        cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        transition: all 0.15s; display: flex; align-items: center; gap: 6px;
     }
     .back-btn:active { transform: scale(0.96); background: #f5f0ff; }
-    .feature-header .feature-name {
-        font-size: 18px;
-        font-weight: 700;
-        color: #5e35b1;
-    }
+    .feature-header .feature-name { font-size: 18px; font-weight: 700; color: #5e35b1; }
 
     .feature-box {
-        background: #ffffff;
-        border-radius: 20px;
-        padding: 20px 16px;
-        display: none;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        background: #ffffff; border-radius: 20px; padding: 20px 16px;
+        display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         border: 1px solid rgba(0,0,0,0.03);
     }
     .feature-box.active { display: block; }
-    .feature-title {
-        font-weight: 700;
-        font-size: 17px;
-        color: #5e35b1;
-        margin-bottom: 14px;
-        text-align: center;
-    }
+    .feature-title { font-weight: 700; font-size: 17px; color: #5e35b1; margin-bottom: 14px; text-align: center; }
 
     .row { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-bottom: 8px; align-items: center; }
     .row label { font-size: 13px; width: 48px; color: #666; font-weight: 600; }
     .row input {
         flex: 1; min-width: 50px; padding: 9px 6px;
-        border: 1px solid #d0c4e8; border-radius: 10px;
-        font-size: 14px; background: #faf8ff;
-        text-align: center; font-weight: 600;
+        border: 1px solid #d0c4e8; border-radius: 10px; font-size: 14px;
+        background: #faf8ff; text-align: center; font-weight: 600;
         color: #333; transition: border 0.15s;
     }
     .row input:focus { outline: none; border-color: #5e35b1; background: #fff; box-shadow: 0 0 0 3px rgba(94,53,177,0.1); }
@@ -393,12 +305,11 @@
     .karat-row input:focus { outline: none; border-color: #5e35b1; background: #fff; box-shadow: 0 0 0 3px rgba(94,53,177,0.1); }
 
     .btn {
-        background: #5e35b1; color: #fff; border: none;
-        padding: 14px; border-radius: 14px; font-size: 16px;
-        font-weight: 700; width: 100%; margin: 14px 0 6px 0;
-        cursor: pointer; box-shadow: 0 4px 12px rgba(94,53,177,0.3);
-        transition: transform 0.15s, box-shadow 0.15s;
-        letter-spacing: 0.3px;
+        background: #5e35b1; color: #fff; border: none; padding: 14px;
+        border-radius: 14px; font-size: 16px; font-weight: 700; width: 100%;
+        margin: 14px 0 6px 0; cursor: pointer;
+        box-shadow: 0 4px 12px rgba(94,53,177,0.3);
+        transition: transform 0.15s, box-shadow 0.15s; letter-spacing: 0.3px;
     }
     .btn:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(94,53,177,0.3); }
     .btn-secondary { background: #7e57c2; box-shadow: 0 4px 12px rgba(126,87,194,0.3); }
@@ -421,9 +332,9 @@
     .print-btn .p-icon { font-size: 16px; }
 
     .price-result {
-        background: #faf8ff; border: 2px solid #5e35b1;
-        border-radius: 16px; padding: 18px; margin-top: 12px;
-        text-align: center; box-shadow: 0 4px 12px rgba(94,53,177,0.1);
+        background: #faf8ff; border: 2px solid #5e35b1; border-radius: 16px;
+        padding: 18px; margin-top: 12px; text-align: center;
+        box-shadow: 0 4px 12px rgba(94,53,177,0.1);
     }
     .price-result .label { font-size: 13px; color: #888; margin-bottom: 4px; font-weight: 600; }
     .price-result .amount { font-size: 28px; font-weight: 800; color: #5e35b1; letter-spacing: 0.5px; }
@@ -453,104 +364,31 @@
     .live-rate-card .title { font-size: 16px; font-weight: 700; color: #2e7d32; }
     .live-rate-card .sub { font-size: 12px; color: #43a047; margin-top: 4px; }
 
-    /* ====== ABOUT PAGE ====== */
-    .about-hero {
-        text-align: center;
-        padding: 20px 10px 18px 10px;
-        background: linear-gradient(145deg, #ede7f6, #d1c4e9);
-        border-radius: 18px;
-        margin-bottom: 16px;
-    }
-    .about-hero .about-logo {
-        width: 72px; height: 72px;
-        background: #5e35b1;
-        color: #fff;
-        border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
-        font-size: 38px;
-        margin: 0 auto 10px auto;
-        box-shadow: 0 6px 16px rgba(94,53,177,0.35);
-    }
+    /* ABOUT */
+    .about-hero { text-align: center; padding: 20px 10px 18px 10px; background: linear-gradient(145deg, #ede7f6, #d1c4e9); border-radius: 18px; margin-bottom: 16px; }
+    .about-hero .about-logo { width: 72px; height: 72px; background: #5e35b1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 38px; margin: 0 auto 10px auto; box-shadow: 0 6px 16px rgba(94,53,177,0.35); }
     .about-hero h2 { font-size: 20px; color: #4527a0; font-weight: 800; margin-bottom: 4px; }
     .about-hero .ver { font-size: 12px; color: #673ab7; font-weight: 600; }
     .about-hero .tagline { font-size: 13px; color: #555; margin-top: 8px; font-weight: 600; }
 
-    .about-section {
-        background: #fff;
-        border-radius: 16px;
-        padding: 16px;
-        margin-bottom: 14px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        border: 1px solid rgba(0,0,0,0.03);
-    }
-    .about-section h3 {
-        font-size: 15px;
-        color: #5e35b1;
-        margin-bottom: 10px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-weight: 700;
-    }
-    .about-section p {
-        font-size: 13px;
-        color: #555;
-        line-height: 1.8;
-        font-weight: 500;
-    }
-    .about-section ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    .about-section ul li {
-        font-size: 13px;
-        color: #444;
-        line-height: 1.9;
-        padding: 4px 0 4px 22px;
-        position: relative;
-        font-weight: 500;
-    }
-    .about-section ul li::before {
-        content: '✔';
-        position: absolute;
-        left: 0;
-        color: #5e35b1;
-        font-weight: 700;
-    }
-    .about-info-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 8px 0;
-        border-bottom: 1px dashed #e0d8f0;
-        font-size: 13px;
-    }
+    .about-section { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); }
+    .about-section h3 { font-size: 15px; color: #5e35b1; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
+    .about-section p { font-size: 13px; color: #555; line-height: 1.8; font-weight: 500; }
+    .about-section ul { list-style: none; padding: 0; margin: 0; }
+    .about-section ul li { font-size: 13px; color: #444; line-height: 1.9; padding: 4px 0 4px 22px; position: relative; font-weight: 500; }
+    .about-section ul li::before { content: '✔'; position: absolute; left: 0; color: #5e35b1; font-weight: 700; }
+    .about-info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e0d8f0; font-size: 13px; }
     .about-info-row:last-child { border-bottom: none; }
     .about-info-row .k { color: #666; font-weight: 600; }
     .about-info-row .v { color: #5e35b1; font-weight: 700; text-align: right; }
     .about-info-row .v a { color: #5e35b1; text-decoration: none; }
 
-    .about-disclaimer {
-        background: #fff8e1;
-        border: 1px solid #ffe082;
-        border-radius: 12px;
-        padding: 12px 14px;
-        font-size: 12px;
-        color: #795548;
-        line-height: 1.7;
-        font-weight: 600;
-    }
+    .about-disclaimer { background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #795548; line-height: 1.7; font-weight: 600; }
     .about-disclaimer b { color: #e65100; }
 
-    .about-footer-note {
-        text-align: center;
-        font-size: 12px;
-        color: #888;
-        margin: 18px 0 6px 0;
-        font-weight: 600;
-        line-height: 1.7;
-    }
+    .about-footer-note { text-align: center; font-size: 12px; color: #888; margin: 18px 0 6px 0; font-weight: 600; line-height: 1.7; }
 
+    /* CALCULATOR */
     .calculator { width: 100%; max-width: 360px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); overflow: hidden; padding-bottom: 8px; border: 1px solid #e0d8f0; }
     .calculator .display-container { background: #faf8ff; padding: 20px 16px 10px 16px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 110px; border-bottom: 1px solid #e0d8f0; }
     .calculator .expression { font-size: 13px; color: #999; text-align: right; min-height: 18px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -566,21 +404,12 @@
     .calculator .equal-btn:active { background: #4527a0; transform: scale(0.96); }
 
     #toast {
-        position: fixed;
-        top: 20px;
-        left: 50%;
+        position: fixed; top: 20px; left: 50%;
         transform: translateX(-50%) translateY(-100px);
-        background: #323232;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 12px;
-        font-size: 14px;
-        font-weight: 600;
-        z-index: 99999;
-        transition: transform 0.3s ease;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        max-width: 90%;
-        text-align: center;
+        background: #323232; color: white; padding: 12px 24px;
+        border-radius: 12px; font-size: 14px; font-weight: 600;
+        z-index: 99999; transition: transform 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2); max-width: 90%; text-align: center;
     }
     #toast.show { transform: translateX(-50%) translateY(0); }
     #toast.success { background: #43a047; }
@@ -591,37 +420,12 @@
     @media print {
         body * { visibility: hidden; }
         #printArea, #printArea * { visibility: visible; }
-        #printArea {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 27.94mm 10mm 10mm 10mm;
-            background: #fff;
-            box-sizing: border-box;
-        }
-        .print-header {
-            text-align: center;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #b8860b;
-            padding-bottom: 6px;
-        }
+        #printArea { position: absolute; left: 0; top: 0; width: 100%; padding: 27.94mm 10mm 10mm 10mm; background: #fff; box-sizing: border-box; }
+        .print-header { text-align: center; margin-bottom: 10px; border-bottom: 2px solid #b8860b; padding-bottom: 6px; }
         .print-header h2 { color: #b8860b; font-size: 20px; }
         .print-header .sub { font-size: 11px; color: #666; margin-top: 3px; }
-        .print-content {
-            font-size: 14px;
-            line-height: 1.9;
-            white-space: pre-wrap;
-            color: #222;
-        }
-        .print-footer {
-            margin-top: 18px;
-            padding-top: 8px;
-            border-top: 1px dashed #999;
-            font-size: 11px;
-            color: #666;
-            text-align: center;
-        }
+        .print-content { font-size: 14px; line-height: 1.9; white-space: pre-wrap; color: #222; }
+        .print-footer { margin-top: 18px; padding-top: 8px; border-top: 1px dashed #999; font-size: 11px; color: #666; text-align: center; }
     }
 
     @media (min-width: 600px) {
@@ -662,7 +466,7 @@
                 <p>সহজ সোনার হিসাব</p>
             </div>
         </div>
-        <div class="header-right">🔗</div>
+        <div class="header-right" onclick="shareApp()" title="Share App">🔗</div>
     </header>
 
     <div class="content-scroll">
@@ -704,12 +508,11 @@
                 </div>
             </div>
 
+            <!-- ===== Banner 320x50 (ড্যাশবোর্ড) ===== -->
             <div class="ad-slot" id="adSlotDashboard">
                 <iframe
-                    title="ad"
+                    title="ad-320x50"
                     scrolling="no"
-                    sandbox="allow-scripts allow-same-origin"
-                    referrerpolicy="no-referrer"
                     style="width:320px;height:50px;border:0;overflow:hidden;display:block;"
                     srcdoc='
                         <!DOCTYPE html>
@@ -742,6 +545,7 @@
                 <span class="feature-name" id="currentFeatureName">ফিচার</span>
             </div>
 
+            <!-- MAIN -->
             <div id="feature-main" class="feature-box">
                 <div class="feature-title">🪙 পাকা/জমা অ্যাডজাস্ট</div>
                 <div style="font-size:13px; color:#666; margin-bottom:4px;">মোট ওজন (Total Weight)</div>
@@ -767,6 +571,7 @@
                 </button>
             </div>
 
+            <!-- PURE -->
             <div id="feature-pure" class="feature-box">
                 <div class="feature-title">✨ পাকা (২৪K) → টার্গেট ক্যারেট</div>
                 <div class="row"><label>ভরি</label><input id="pVori" type="number" value="0" step="any" /></div>
@@ -781,6 +586,7 @@
                 </button>
             </div>
 
+            <!-- ANY -->
             <div id="feature-any" class="feature-box">
                 <div class="feature-title">🔄 যেকোনো ক্যারেট → টার্গেট</div>
                 <div class="row"><label>বর্তমান K</label><input id="currentKarat" type="number" value="00" step="any" /></div>
@@ -796,6 +602,7 @@
                 </button>
             </div>
 
+            <!-- GRAM -->
             <div id="feature-gram" class="feature-box">
                 <div class="feature-title">⚖️ গ্রাম ↔ ভরি-আনা-রতি-পয়েন্ট</div>
                 <div class="row"><label>গ্রাম</label><input id="gramInput" type="number" value="0.0" step="any" oninput="convertGramToVori()" /></div>
@@ -805,6 +612,7 @@
                 </button>
             </div>
 
+            <!-- PRICE -->
             <div id="feature-price" class="feature-box">
                 <div class="feature-title">💰 দাম / মূল্য হিসাব</div>
 
@@ -847,6 +655,7 @@
                 </button>
             </div>
 
+            <!-- CHART -->
             <div id="feature-chart" class="feature-box">
                 <div class="feature-title">📊 ক্যারেট-খাদ চার্ট (২৪K → ১K)</div>
 
@@ -901,6 +710,7 @@
                 </button>
             </div>
 
+            <!-- LIVE RATE -->
             <div id="feature-liveRate" class="feature-box">
                 <div class="feature-title">📈 আজকের সোনার দর (Gold Price Today)</div>
                 <div style="font-size:13px; color:#666; margin-bottom:10px; text-align:center;">
@@ -917,12 +727,11 @@
                     💡 দর প্রায় প্রতিদিনই পরিবর্তন হয়।
                 </div>
 
+                <!-- ===== Banner 728x90 (Live Rate) ===== -->
                 <div class="ad-slot" style="margin-top:12px;">
                     <iframe
-                        title="ad2"
+                        title="ad-728x90"
                         scrolling="no"
-                        sandbox="allow-scripts allow-same-origin"
-                        referrerpolicy="no-referrer"
                         style="width:100%;max-width:728px;height:90px;border:0;overflow:hidden;display:block;"
                         srcdoc='
                             <!DOCTYPE html>
@@ -945,11 +754,10 @@
                 </div>
             </div>
 
-            <!-- ================= ABOUT PAGE (NEW) ================= -->
+            <!-- ABOUT -->
             <div id="feature-about" class="feature-box">
                 <div class="feature-title">ℹ️ অ্যাপ সম্পর্কে (About)</div>
 
-                <!-- Hero -->
                 <div class="about-hero">
                     <div class="about-logo">🪙</div>
                     <h2>Gold Adjustment</h2>
@@ -957,7 +765,6 @@
                     <div class="tagline">🇧🇩 বাংলাদেশের স্বর্ণ ব্যবসায়ীদের জন্য একটি পূর্ণাঙ্গ ডিজিটাল সমাধান</div>
                 </div>
 
-                <!-- পরিচিতি -->
                 <div class="about-section">
                     <h3>📖 অ্যাপ পরিচিতি</h3>
                     <p>
@@ -972,7 +779,6 @@
                     </p>
                 </div>
 
-                <!-- ফিচার -->
                 <div class="about-section">
                     <h3>✨ প্রধান ফিচারসমূহ</h3>
                     <ul>
@@ -989,7 +795,6 @@
                     </ul>
                 </div>
 
-                <!-- কেন ব্যবহার করবেন -->
                 <div class="about-section">
                     <h3>💡 কেন এই অ্যাপ ব্যবহার করবেন?</h3>
                     <ul>
@@ -1001,53 +806,23 @@
                     </ul>
                 </div>
 
-                <!-- অ্যাপ তথ্য -->
                 <div class="about-section">
                     <h3>📱 অ্যাপ তথ্য</h3>
-                    <div class="about-info-row">
-                        <span class="k">অ্যাপ নাম</span>
-                        <span class="v">Gold Adjustment</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">ভার্সন</span>
-                        <span class="v">2.0</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">প্লাটফর্ম</span>
-                        <span class="v">Web / Android / iOS</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">ভাষা</span>
-                        <span class="v">বাংলা (bn-BD)</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">মূল্য</span>
-                        <span class="v">সম্পূর্ণ ফ্রি</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">অফলাইন</span>
-                        <span class="v">সাপোর্টেড ✅</span>
-                    </div>
+                    <div class="about-info-row"><span class="k">অ্যাপ নাম</span><span class="v">Gold Adjustment</span></div>
+                    <div class="about-info-row"><span class="k">ভার্সন</span><span class="v">2.0</span></div>
+                    <div class="about-info-row"><span class="k">প্লাটফর্ম</span><span class="v">Web / Android / iOS</span></div>
+                    <div class="about-info-row"><span class="k">ভাষা</span><span class="v">বাংলা (bn-BD)</span></div>
+                    <div class="about-info-row"><span class="k">মূল্য</span><span class="v">সম্পূর্ণ ফ্রি</span></div>
+                    <div class="about-info-row"><span class="k">অফলাইন</span><span class="v">সাপোর্টেড ✅</span></div>
                 </div>
 
-                <!-- ডেভেলপার -->
                 <div class="about-section">
                     <h3>👨‍💻 ডেভেলপার তথ্য</h3>
-                    <div class="about-info-row">
-                        <span class="k">নাম</span>
-                        <span class="v">M.A.Ahad</span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">মোবাইল</span>
-                        <span class="v"><a href="tel:01628255672">01628255672</a></span>
-                    </div>
-                    <div class="about-info-row">
-                        <span class="k">ওয়েবসাইট</span>
-                        <span class="v"><a href="https://goldadjustment2.vercel.app/" target="_blank" rel="noopener">goldadjustment2.vercel.app</a></span>
-                    </div>
+                    <div class="about-info-row"><span class="k">নাম</span><span class="v">M.A.Ahad</span></div>
+                    <div class="about-info-row"><span class="k">মোবাইল</span><span class="v"><a href="tel:01628255672">01628255672</a></span></div>
+                    <div class="about-info-row"><span class="k">ওয়েবসাইট</span><span class="v"><a href="https://goldadjustment2.vercel.app/" target="_blank" rel="noopener">goldadjustment2.vercel.app</a></span></div>
                 </div>
 
-                <!-- ডিসক্লেইমার -->
                 <div class="about-section">
                     <h3>⚠️ ডিসক্লেইমার</h3>
                     <div class="about-disclaimer">
@@ -1067,8 +842,8 @@
                     <span class="p-icon">🖨️</span> About প্রিন্ট করুন
                 </button>
             </div>
-            <!-- ================= END ABOUT PAGE ================= -->
 
+            <!-- CALCULATOR -->
             <div id="feature-calc" class="feature-box" style="background:transparent; border:none; padding:0; box-shadow:none;">
                 <div class="calculator" id="calculatorBox">
                     <div class="display-container">
@@ -1122,7 +897,7 @@
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- BOTTOM NAV -->
     <nav class="bottom-nav">
         <div class="nav-item active" id="navHome" onclick="goBack()">
             <span class="nav-icon">🏠</span>
@@ -1139,6 +914,24 @@
     </nav>
 
 </div>
+
+<!-- ============================================================
+     SOCIAL BAR (গ্লোবাল, শুধু একবার)
+     ============================================================ -->
+<script>
+(function() {
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'https://pl31431747.profitableratecpmnetwork.com/d1/54/3e/d1543e854f6509956991eaaeec5f4bd0.js';
+            s.onerror = function() { console.warn('[SocialBar] load failed'); };
+            document.body.appendChild(s);
+        }, 1500);
+    });
+})();
+</script>
 
 <script>
     (function() {
@@ -1157,11 +950,7 @@
             const v = String(el.value).trim();
             if (v === '' || v === '-' || v === '.' || v === '-.' || isNaN(parseFloat(v))) {
                 const def = el.getAttribute('data-default');
-                if (def !== null && def !== undefined) {
-                    el.value = def;
-                } else {
-                    el.value = '0';
-                }
+                if (def !== null && def !== undefined) { el.value = def; } else { el.value = '0'; }
             }
         }
 
@@ -1171,11 +960,7 @@
 
             el.addEventListener('focus', function() {
                 setTimeout(() => {
-                    try {
-                        if (this.value !== '' && this.value !== '-') {
-                            this.select();
-                        }
-                    } catch (e) {}
+                    try { if (this.value !== '' && this.value !== '-') this.select(); } catch (e) {}
                 }, 30);
             });
 
@@ -1188,9 +973,7 @@
                 } catch (err) {}
             });
 
-            el.addEventListener('blur', function() {
-                emptySafeValue(this);
-            });
+            el.addEventListener('blur', function() { emptySafeValue(this); });
 
             el.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter') {
@@ -1205,17 +988,7 @@
                             return true;
                         });
                     const idx = all.indexOf(this);
-                    if (idx > -1 && idx < all.length - 1) {
-                        all[idx + 1].focus();
-                    } else {
-                        this.blur();
-                    }
-                }
-            });
-
-            el.addEventListener('input', function() {
-                if (this.type === 'text' && this.getAttribute('inputmode') === 'numeric') {
-                    this.value = this.value.replace(/[^0-9]/g, '');
+                    if (idx > -1 && idx < all.length - 1) { all[idx + 1].focus(); } else { this.blur(); }
                 }
             });
         }
@@ -1228,9 +1001,7 @@
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', applyToAll);
-        } else {
-            applyToAll();
-        }
+        } else { applyToAll(); }
 
         const mo = new MutationObserver(applyToAll);
         mo.observe(document.body, { childList: true, subtree: true });
@@ -1243,9 +1014,7 @@
         try {
             if (history.state && history.state.screen === stateName) return;
             history.pushState({ screen: stateName, ts: Date.now() }, '');
-        } catch (e) {
-            console.warn('History pushState failed:', e);
-        }
+        } catch (e) {}
     }
 
     function showToast(msg, type = 'info', duration = 2500) {
@@ -1257,14 +1026,71 @@
         t._timer = setTimeout(() => { t.className = ''; }, duration);
     }
 
+    // ============================================================
+    // SHARE APP — সরাসরি শেয়ার মেনু (WhatsApp, Messenger, FB, Telegram ...)
+    // ============================================================
+    function shareApp() {
+        const shareUrl = 'https://goldadjustment2.vercel.app/';
+        const shareText = '🇧🇩 Gold Adjustment — সোনার হিসাব ও ক্যারেট ক্যালকুলেটর\n\n' +
+                          'আজকের সোনার দাম, ক্যারেট হিসাব, ভরি-আনা-রতি, মজুরি হিসাব — সব এক অ্যাপে!\n\n' +
+                          'সম্পূর্ণ ফ্রি ও অফলাইনেও কাজ করে 👇';
+
+        // মোবাইল/আধুনিক ব্রাউজারে native share sheet খুলবে
+        if (navigator.share) {
+            navigator.share({
+                title: 'Gold Adjustment — সোনার হিসাব অ্যাপ',
+                text: shareText,
+                url: shareUrl
+            })
+            .then(() => {
+                console.log('[Share] Success');
+            })
+            .catch((err) => {
+                // ইউজার cancel করলে চুপ থাকি, অন্যথায় fallback
+                if (err && err.name !== 'AbortError') {
+                    console.warn('Share failed:', err);
+                    shareViaWhatsApp(shareText, shareUrl);
+                }
+            });
+        } else {
+            // Fallback: সরাসরি WhatsApp শেয়ার (মোবাইল/ডেস্কটপ)
+            shareViaWhatsApp(shareText, shareUrl);
+        }
+    }
+
+    function shareViaWhatsApp(text, url) {
+        // WhatsApp এ সরাসরি শেয়ার — মোবাইলে WhatsApp অ্যাপ, ডেস্কটপে WhatsApp Web খুলবে
+        const waUrl = 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + url);
+        try {
+            window.open(waUrl, '_blank', 'noopener');
+        } catch (e) {
+            // শেষ fallback: কপি
+            fallbackCopy(text + '\n' + url);
+        }
+    }
+
+    function fallbackCopy(text) {
+        try {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.focus(); ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('লিংক কপি হয়েছে — এখন পেস্ট করে শেয়ার করুন', 'success', 2500);
+        } catch (e) {
+            showToast('লিংক: goldadjustment2.vercel.app', 'info', 3500);
+        }
+    }
+
     function closeAppPWA() {
         try { window.close(); } catch (e) {}
-
         setTimeout(() => {
             try { self.close(); } catch (e) {}
             try { window.open('', '_self', ''); window.close(); } catch (e) {}
         }, 80);
-
         setTimeout(() => {
             try {
                 document.documentElement.innerHTML =
@@ -1281,22 +1107,16 @@
 
     window.addEventListener('popstate', function () {
         if (popstateLock) return;
-
         if (currentScreen === 'feature') {
             showDashboard(false);
             currentScreen = 'dashboard';
             try { history.pushState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
             return;
         }
-
         if (currentScreen === 'dashboard') {
             try { history.pushState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
-
             const wantExit = confirm('GoldAdjustment থেকে বেরিয়ে যেতে চান?\n\nOk = বেরিয়ে যাব\nCancel = অ্যাপে থাকব');
-            if (wantExit) {
-                popstateLock = true;
-                closeAppPWA();
-            }
+            if (wantExit) { popstateLock = true; closeAppPWA(); }
         }
     });
 
@@ -1346,11 +1166,7 @@
         if (id === 'price') calculatePrice();
         if (id === 'calc') calcClearAll();
 
-        if (id === 'about') {
-            updateBottomNav('about');
-        } else {
-            updateBottomNav('feature');
-        }
+        if (id === 'about') { updateBottomNav('about'); } else { updateBottomNav('feature'); }
 
         pushHistoryState('feature');
     }
@@ -1358,46 +1174,26 @@
     function goBack() {
         showDashboard(false);
         currentScreen = 'dashboard';
-        try {
-            history.replaceState({ screen: 'dashboard', ts: Date.now() }, '');
-        } catch (e) {}
+        try { history.replaceState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
     }
 
     function printAbout() {
         const now = new Date();
-        const dateStr = now.toLocaleDateString('bn-BD', {
-            year: 'numeric', month: 'long', day: 'numeric'
-        });
-        const timeStr = now.toLocaleTimeString('bn-BD', {
-            hour: '2-digit', minute: '2-digit'
-        });
+        const dateStr = now.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+        const timeStr = now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
         document.getElementById('printDateTime').textContent = `${dateStr} — ${timeStr}`;
         const content =
-            'অ্যাপ পরিচিতি\n' +
-            '─────────────\n' +
+            'অ্যাপ পরিচিতি\n─────────────\n' +
             'Gold Adjustment একটি সম্পূর্ণ ফ্রি অ্যাপ, যা বাংলাদেশের স্বর্ণ ব্যবসায়ীদের সোনার হিসাব, ক্যারেট রূপান্তর, মূল্য নির্ণয় ও অ্যাডজাস্টমেন্ট সহজ করতে সাহায্য করে।\n\n' +
-            'প্রধান ফিচারসমূহ\n' +
-            '─────────────\n' +
-            '• আজকের সোনার দর (বাজুস দর)\n' +
-            '• পাকা/জমা হিসাব (Body + Joint Karat)\n' +
-            '• পাকা (২৪K) থেকে টার্গেট ক্যারেট\n' +
-            '• যেকোনো ক্যারেট থেকে টার্গেট ক্যারেট\n' +
-            '• গ্রাম ↔ ভরি-আনা-রতি-পয়েন্ট\n' +
-            '• মূল্য ও মজুরি হিসাব\n' +
-            '• ক্যারেট-খাদ চার্ট (২৪K → ১K)\n' +
-            '• ক্যালকুলেটর (Memory + Scientific)\n' +
-            '• ফলাফল প্রিন্ট সুবিধা\n' +
-            '• সম্পূর্ণ বাংলা ও অফলাইন সাপোর্ট\n\n' +
-            'ডেভেলপার তথ্য\n' +
-            '─────────────\n' +
-            'নাম     : M.A.Ahad\n' +
-            'মোবাইল  : 01628255672\n' +
-            'ওয়েবসাইট: goldadjustment2.vercel.app\n\n' +
-            '⚠️ ডিসক্লেইমার\n' +
-            '─────────────\n' +
-            'অ্যাপে প্রদর্শিত দর ইন্টারনেট সোর্স থেকে সংগৃহীত। যেকোনো লেনদেনের পূর্বে সর্বশেষ দর যাচাই করে নিন। এটি কোনো আর্থিক পরামর্শ নয়।\n\n' +
-            '❤️ বাংলাদেশের স্বর্ণ ব্যবসায়ীদের জন্য ভালোবাসা দিয়ে তৈরি\n' +
-            '© 2025 Gold Adjustment — All Rights Reserved';
+            'প্রধান ফিচারসমূহ\n─────────────\n' +
+            '• আজকের সোনার দর (বাজুস দর)\n• পাকা/জমা হিসাব (Body + Joint Karat)\n' +
+            '• পাকা (২৪K) থেকে টার্গেট ক্যারেট\n• যেকোনো ক্যারেট থেকে টার্গেট ক্যারেট\n' +
+            '• গ্রাম ↔ ভরি-আনা-রতি-পয়েন্ট\n• মূল্য ও মজুরি হিসাব\n' +
+            '• ক্যারেট-খাদ চার্ট (২৪K → ১K)\n• ক্যালকুলেটর (Memory + Scientific)\n' +
+            '• ফলাফল প্রিন্ট সুবিধা\n• সম্পূর্ণ বাংলা ও অফলাইন সাপোর্ট\n\n' +
+            'ডেভেলপার তথ্য\n─────────────\nনাম     : M.A.Ahad\nমোবাইল  : 01628255672\nওয়েবসাইট: goldadjustment2.vercel.app\n\n' +
+            '⚠️ ডিসক্লেইমার\n─────────────\nঅ্যাপে প্রদর্শিত দর ইন্টারনেট সোর্স থেকে সংগৃহীত। যেকোনো লেনদেনের পূর্বে সর্বশেষ দর যাচাই করে নিন।\n\n' +
+            '❤️ বাংলাদেশের স্বর্ণ ব্যবসায়ীদের জন্য ভালোবাসা দিয়ে তৈরি\n© 2025 Gold Adjustment';
         document.getElementById('printContent').textContent = content;
         const printArea = document.getElementById('printArea');
         printArea.style.display = 'block';
@@ -1450,24 +1246,16 @@
         }
 
         const now = new Date();
-        const dateStr = now.toLocaleDateString('bn-BD', {
-            year: 'numeric', month: 'long', day: 'numeric'
-        });
-        const timeStr = now.toLocaleTimeString('bn-BD', {
-            hour: '2-digit', minute: '2-digit'
-        });
+        const dateStr = now.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+        const timeStr = now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
 
         document.getElementById('printDateTime').textContent = `${dateStr} — ${timeStr}`;
         document.getElementById('printContent').textContent = `${title}\n${'─'.repeat(30)}\n\n${content}`;
 
         const printArea = document.getElementById('printArea');
         printArea.style.display = 'block';
-
         window.print();
-
-        setTimeout(() => {
-            printArea.style.display = 'none';
-        }, 500);
+        setTimeout(() => { printArea.style.display = 'none'; }, 500);
     }
 
     function calculateMain() {
@@ -1500,11 +1288,9 @@
         const r = parseFloat(document.getElementById('pRoti').value) || 0;
         const p = parseFloat(document.getElementById('pPoint').value) || 0;
         const target = parseFloat(document.getElementById('pureTarget').value) || 21;
-
         const purePoints = v * 960 + a * 60 + r * 10 + p;
         const alloy = (purePoints * 24) / target - purePoints;
         const total = purePoints + alloy;
-
         document.getElementById('pureResult').textContent =
             `খাদের ওজন  : ${toVoriAnaRoti(alloy)}\nমোট ওজন    : ${toVoriAnaRoti(total)}`;
     }
@@ -1516,10 +1302,8 @@
         const r = parseFloat(document.getElementById('cRoti').value) || 0;
         const p = parseFloat(document.getElementById('cPoint').value) || 0;
         const tk = parseFloat(document.getElementById('targetKaratAny').value) || 21;
-
         const points = v * 960 + a * 60 + r * 10 + p;
         let add, total;
-
         if (tk > ck) {
             add = points * (tk - ck) / (24 - tk);
             total = points + add;
@@ -1559,23 +1343,15 @@
         const a = parseFloat(document.getElementById('prAna').value) || 0;
         const r = parseFloat(document.getElementById('prRoti').value) || 0;
         const p = parseFloat(document.getElementById('prPoint').value) || 0;
-
         const laborCost = parseFloat(document.getElementById('laborCost').value) || 0;
         const laborType = document.getElementById('laborType').value;
-
         const pricePerPoint = pricePerVori / 960;
         const totalPoints = v * 960 + a * 60 + r * 10 + p;
         const goldPrice = totalPoints * pricePerPoint;
-
         let laborTotal = 0;
-        if (laborType === 'fixed') {
-            laborTotal = laborCost;
-        } else if (laborType === 'perVori') {
-            laborTotal = (totalPoints / 960) * laborCost;
-        }
-
+        if (laborType === 'fixed') { laborTotal = laborCost; }
+        else if (laborType === 'perVori') { laborTotal = (totalPoints / 960) * laborCost; }
         const totalPrice = goldPrice + laborTotal;
-
         document.getElementById('priceAmount').textContent = '৳ ' + formatBDT(totalPrice);
         document.getElementById('priceSubLine').textContent = toVoriAnaRotiBangla(totalPoints);
         document.getElementById('laborSubLine').textContent =
@@ -1588,9 +1364,7 @@
         let intPart = parts[0];
         let lastThree = intPart.substring(intPart.length - 3);
         let otherNumbers = intPart.substring(0, intPart.length - 3);
-        if (otherNumbers !== '') {
-            lastThree = ',' + lastThree;
-        }
+        if (otherNumbers !== '') { lastThree = ',' + lastThree; }
         const formattedInt = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
         return formattedInt + '.' + parts[1];
     }
@@ -1615,6 +1389,7 @@
         return `${v}-${a}-${r}-${p}`;
     }
 
+    // ===== CALCULATOR =====
     let calcCurrentInput = '0';
     let calcPreviousInput = '';
     let calcOperator = '';
@@ -1653,18 +1428,14 @@
             calcIsNewInput = false;
         } else {
             if (digit === '.' && calcCurrentInput.includes('.')) return;
-            if (calcCurrentInput === '0' && digit !== '.') {
-                calcCurrentInput = digit;
-            } else {
-                calcCurrentInput += digit;
-            }
+            if (calcCurrentInput === '0' && digit !== '.') { calcCurrentInput = digit; }
+            else { calcCurrentInput += digit; }
         }
         calcUpdateDisplay();
     }
 
     function calcInputOperator(op) {
         if (calcCurrentInput === 'Error' || calcCurrentInput === 'Cannot divide by zero') calcClearAll();
-
         if (op === '1/') {
             calcExpressionHistory = `1/(${calcFormatNumber(calcCurrentInput)})`;
             calcCurrentInput = (1 / parseFloat(calcCurrentInput.replace(/,/g, ''))).toString();
@@ -1687,7 +1458,6 @@
             calcCurrentInput = (val / 100).toString();
             calcIsNewInput = true; calcUpdateDisplay(); return;
         }
-
         let rawCurrent = calcCurrentInput.replace(/,/g, '');
         if (calcOperator && !calcIsNewInput) {
             calcCalculateResult(false);
@@ -1696,7 +1466,6 @@
         calcPreviousInput = rawCurrent;
         calcOperator = op;
         calcIsNewInput = true;
-
         let opSymbol = op === '*' ? '×' : op === '/' ? '÷' : op;
         calcExpressionHistory = `${calcFormatNumber(calcPreviousInput)} ${opSymbol}`;
         calcUpdateDisplay();
@@ -1704,11 +1473,9 @@
 
     function calcCalculateResult(showFullHistory = true) {
         if (!calcOperator || calcPreviousInput === '') return;
-
         let prev = parseFloat(calcPreviousInput);
         let curr = parseFloat(calcCurrentInput.replace(/,/g, ''));
         let result = 0;
-
         switch (calcOperator) {
             case '+': result = prev + curr; break;
             case '-': result = prev - curr; break;
@@ -1722,17 +1489,13 @@
                 }
                 result = prev / curr; break;
         }
-
         result = Math.round(result * 100000000000) / 100000000000;
-
         if (showFullHistory) {
             let opSymbol = calcOperator === '*' ? '×' : calcOperator === '/' ? '÷' : calcOperator;
             calcExpressionHistory = `${calcFormatNumber(calcPreviousInput)} ${opSymbol} ${calcFormatNumber(calcCurrentInput)} =`;
         }
-
         calcCurrentInput = result.toString();
         calcOperator = ''; calcPreviousInput = ''; calcIsNewInput = true;
-        
         calcUpdateDisplay();
     }
 
@@ -1742,10 +1505,7 @@
         calcUpdateDisplay();
     }
 
-    function calcClearEntry() {
-        calcCurrentInput = '0'; calcIsNewInput = true;
-        calcUpdateDisplay();
-    }
+    function calcClearEntry() { calcCurrentInput = '0'; calcIsNewInput = true; calcUpdateDisplay(); }
 
     function calcBackspace() {
         if (calcIsNewInput || calcCurrentInput === 'Error' || calcCurrentInput === 'Cannot divide by zero') {
@@ -1754,54 +1514,31 @@
         if (calcCurrentInput.length > 1) {
             calcCurrentInput = calcCurrentInput.slice(0, -1);
             if (calcCurrentInput === '-') calcCurrentInput = '0';
-        } else {
-            calcCurrentInput = '0'; calcIsNewInput = true;
-        }
+        } else { calcCurrentInput = '0'; calcIsNewInput = true; }
         calcUpdateDisplay();
     }
 
     function calcToggleSign() {
         if (calcCurrentInput === '0' || calcCurrentInput === 'Error' || calcCurrentInput === 'Cannot divide by zero') return;
-        if (calcCurrentInput.startsWith('-')) {
-            calcCurrentInput = calcCurrentInput.substring(1);
-        } else {
-            calcCurrentInput = '-' + calcCurrentInput;
-        }
+        if (calcCurrentInput.startsWith('-')) { calcCurrentInput = calcCurrentInput.substring(1); }
+        else { calcCurrentInput = '-' + calcCurrentInput; }
         calcUpdateDisplay();
     }
 
     function calcMemoryClear() { calcMemoryValue = 0; showToast('Memory Cleared', 'info', 1500); }
-    function calcMemoryRecall() { 
-        calcCurrentInput = calcMemoryValue.toString(); 
-        calcIsNewInput = true; calcUpdateDisplay();
-    }
-    function calcMemoryStore() { 
-        calcMemoryValue = parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; 
-        showToast('Stored in Memory', 'success', 1500);
-    }
-    function calcMemoryAdd() { 
-        calcMemoryValue += parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; 
-        calcIsNewInput = true; showToast('Added to Memory', 'success', 1500);
-    }
-    function calcMemorySub() { 
-        calcMemoryValue -= parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; 
-        calcIsNewInput = true; showToast('Subtracted from Memory', 'success', 1500);
-    }
+    function calcMemoryRecall() { calcCurrentInput = calcMemoryValue.toString(); calcIsNewInput = true; calcUpdateDisplay(); }
+    function calcMemoryStore() { calcMemoryValue = parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; showToast('Stored in Memory', 'success', 1500); }
+    function calcMemoryAdd() { calcMemoryValue += parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; calcIsNewInput = true; showToast('Added to Memory', 'success', 1500); }
+    function calcMemorySub() { calcMemoryValue -= parseFloat(calcCurrentInput.replace(/,/g, '')) || 0; calcIsNewInput = true; showToast('Subtracted from Memory', 'success', 1500); }
 
     document.addEventListener('keydown', function(event) {
         const calcFeature = document.getElementById('feature-calc');
-        const isCalcOpen = currentScreen === 'feature' &&
-                           calcFeature &&
-                           calcFeature.classList.contains('active');
-        
+        const isCalcOpen = currentScreen === 'feature' && calcFeature && calcFeature.classList.contains('active');
         if (!isCalcOpen) return;
-
         const activeEl = document.activeElement;
         const isInputFocused = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA');
         if (isInputFocused) return;
-
         const key = event.key;
-
         if (/^[0-9]$/.test(key)) { event.preventDefault(); calcInputDigit(key); }
         else if (key === '.' || key === ',') { event.preventDefault(); calcInputDigit('.'); }
         else if (key === '+') { event.preventDefault(); calcInputOperator('+'); }
@@ -1821,9 +1558,7 @@
         calculateAnyToTarget();
         convertGramToVori();
         calculatePrice();
-        try {
-            history.replaceState({ screen: 'dashboard', ts: Date.now() }, '');
-        } catch (e) {}
+        try { history.replaceState({ screen: 'dashboard', ts: Date.now() }, ''); } catch (e) {}
     });
 </script>
 
