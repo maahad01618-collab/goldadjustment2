@@ -9,18 +9,18 @@
 </script>
 
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#5e35b1" />
 
 <title>Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর | GoldAdjustment</title>
 
-<meta name="description" content="আজকের সোনার দাম (Gold Price Today BD), ২১K ২২K ২৪K ক্যারেটের দাম, সোনার হিসাব ও ক্যারেট ক্যালকুলেটর। পাকা/জমা হিসাব, ভরি-আনা-রতি-পয়েন্ট, মজুরি হিসাব — সব এক অ্যাপে। ফ্রি ও অফলাইনেও কাজ করে।" />
-<meta name="keywords" content="gold price, gold price bd, gold price today, gold rate bd, bangladesh gold price, আজকের সোনার দাম, সোনার দাম, সোনার হিসাব, স্বর্ণ ক্যালকুলেটর, gold calculator bd, ক্যারেট হিসাব, ভরি আনা রতি, সোনার মজুরি, gold adjustment, gold karat calculator, সোনার দাম আজ, ২১ ক্যারেট সোনার দাম, ২২ ক্যারেট সোনার দাম" />
+<meta name="description" content="আজকের সোনার দাম (Gold Price Today BD), ২১K ২২K ২৪K ক্যারেটের দাম, সোনার হিসাব ও ক্যারেট ক্যালকুলেটর।" />
+<meta name="keywords" content="gold price, gold price bd, gold price today, gold rate bd, bangladesh gold price, আজকের সোনার দাম, সোনার দাম, সোনার হিসাব, স্বর্ণ ক্যালকুলেটর" />
 <meta name="author" content="M.A.Ahad" />
 <meta name="robots" content="index, follow" />
 
-<meta property="og:title" content="Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর | GoldAdjustment" />
-<meta property="og:description" content="আজকের সোনার দাম (Gold Price Today BD), ক্যারেট হিসাব, ভরি-আনা-রতি, সোনার মজুরি — সব এক অ্যাপে। ফ্রি ও অফলাইনেও কাজ করে।" />
+<meta property="og:title" content="Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর" />
+<meta property="og:description" content="আজকের সোনার দাম, ক্যারেট হিসাব, ভরি-আনা-রতি, সোনার মজুরি — সব এক অ্যাপে।" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://goldadjustment2.vercel.app/" />
 <meta property="og:image" content="https://goldadjustment2.vercel.app/icon-512.png" />
@@ -28,8 +28,8 @@
 <meta property="og:site_name" content="GoldAdjustment" />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর | GoldAdjustment" />
-<meta name="twitter:description" content="আজকের সোনার দাম (Gold Price Today BD), ক্যারেট হিসাব, ভরি-আনা-রতি, সোনার মজুরি — সব এক অ্যাপে।" />
+<meta name="twitter:title" content="Gold Price BD | সোনার দাম ও ক্যারেট ক্যালকুলেটর" />
+<meta name="twitter:description" content="আজকের সোনার দাম, ক্যারেট হিসাব, ভরি-আনা-রতি, সোনার মজুরি।" />
 <meta name="twitter:image" content="https://goldadjustment2.vercel.app/icon-512.png" />
 
 <script type="application/ld+json">
@@ -50,21 +50,18 @@
 </script>
 
 <!-- ============================================================
-     AD REDIRECT BLOCKER (আপনার এড হোয়াইটলিস্টেড)
+     AD REDIRECT BLOCKER
      ============================================================ -->
 <script>
 (function() {
     'use strict';
-
     var MY_HOST = location.hostname;
-
     var AD_WHITELIST = [
         'highrevenueformat.com',
         'highperformanceformat.com',
         'profitableratecpmnetwork.com',
         'profitableratecpm.com'
     ];
-
     var AD_HOSTS = [
         'adsterra.com','popads.net','popcash.net','propellerads.com',
         'onclickalgo.com','onclickmax.com','clickadu.com','hilltopads.net',
@@ -72,14 +69,12 @@
         'mgid.com','revcontent.com','taboola.com','outbrain.com',
         'bidvertiser.com','infolinks.com','adf.ly','linkvertise.com'
     ];
-
     function isWhitelisted(host) {
         for (var i = 0; i < AD_WHITELIST.length; i++) {
             if (host.indexOf(AD_WHITELIST[i]) !== -1) return true;
         }
         return false;
     }
-
     function isAdUrl(url) {
         if (!url) return false;
         try {
@@ -94,20 +89,17 @@
             return false;
         } catch (e) { return false; }
     }
-
     var _open = window.open;
     window.open = function(url, name, features) {
         try { if (isAdUrl(url)) { console.warn('[AdBlocker] blocked:', url); return null; } } catch (e) {}
         return _open.apply(window, arguments);
     };
-
     document.addEventListener('click', function(e) {
         var el = e.target;
         while (el && el !== document) {
             if (el.tagName === 'A' && el.href) {
                 if (isAdUrl(el.href)) {
                     e.preventDefault(); e.stopPropagation(); e.stopImmediatePropagation();
-                    console.warn('[AdBlocker] blocked:', el.href);
                     return false;
                 }
                 break;
@@ -115,7 +107,6 @@
             el = el.parentNode;
         }
     }, true);
-
     ['mousedown','touchstart','pointerdown'].forEach(function(evt) {
         document.addEventListener(evt, function(e) {
             var el = e.target;
@@ -128,7 +119,6 @@
             }
         }, true);
     });
-
     var mo = new MutationObserver(function(mutations) {
         mutations.forEach(function(m) {
             m.addedNodes && m.addedNodes.forEach(function(node) {
@@ -156,7 +146,6 @@
             });
         });
     });
-
     function startObserver() {
         mo.observe(document.documentElement, { childList: true, subtree: true });
     }
@@ -169,272 +158,685 @@
 </script>
 
 <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; -webkit-tap-highlight-color: transparent; }
+    /* ============================================================
+       APP-LIKE BASE — স্ক্রল-মুক্ত, ফিক্সড-স্ক্রিন লেআউট
+       ============================================================ */
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
 
-    body { background: #f0f2f5; min-height: 100vh; display: flex; justify-content: center; align-items: flex-start; padding: 0; color: #333; }
+    html, body {
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+        background: #f0f2f5;
+        color: #333;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        height: 100vh;
+        height: 100dvh;
+        position: fixed;
+        width: 100%;
+    }
 
     .seo-h1 { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
-    /* HEADER */
+    /* ============================================================
+       APP CONTAINER — ন্যূনতম, ফিক্সড হেডার + স্ক্রলযোগ্য বডি + ফিক্সড নেভ
+       ============================================================ */
+    #appContainer {
+        width: 100%;
+        max-width: 480px;
+        height: 100vh;
+        height: 100dvh;
+        background: #f0f2f5;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 0 40px rgba(0,0,0,0.08);
+    }
+
+    /* ============================================================
+       HEADER — কম্প্যাক্ট, অ্যাপ-স্টাইল
+       ============================================================ */
     .app-header {
-        background: #5e35b1; color: #fff; padding: 18px 16px 22px 16px;
-        display: flex; align-items: center; justify-content: space-between;
-        border-radius: 0 0 28px 28px; box-shadow: 0 4px 12px rgba(94,53,177,0.3);
-        position: relative; z-index: 10;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff;
+        padding: 14px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0;
+        box-shadow: 0 2px 10px rgba(94,53,177,0.25);
+        position: relative;
+        z-index: 10;
+        padding-top: calc(14px + env(safe-area-inset-top, 0px));
     }
-    .app-header .header-left { display: flex; align-items: center; gap: 12px; }
+    .app-header .header-left { display: flex; align-items: center; gap: 10px; }
     .app-header .logo-circle {
-        width: 48px; height: 48px; background: #fff; border-radius: 50%;
+        width: 40px; height: 40px;
+        background: rgba(255,255,255,0.95);
+        border-radius: 12px;
         display: flex; align-items: center; justify-content: center;
-        font-size: 26px; color: #5e35b1; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        font-size: 22px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    .app-header .header-text h1 { font-size: 20px; font-weight: 700; margin: 0; letter-spacing: 0.3px; }
-    .app-header .header-text p { font-size: 13px; opacity: 0.85; margin-top: 2px; }
+    .app-header .header-text h1 { font-size: 17px; font-weight: 700; letter-spacing: 0.2px; }
+    .app-header .header-text p { font-size: 11px; opacity: 0.85; margin-top: 1px; }
     .app-header .header-right {
-        width: 42px; height: 42px; background: rgba(255,255,255,0.18);
-        border-radius: 50%; display: flex; align-items: center; justify-content: center;
-        font-size: 20px; cursor: pointer; transition: transform 0.15s, background 0.15s;
-        border: 1px solid rgba(255,255,255,0.3); color: #fff;
+        width: 38px; height: 38px;
+        background: rgba(255,255,255,0.18);
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px; cursor: pointer;
+        transition: transform 0.15s, background 0.15s;
+        border: 1px solid rgba(255,255,255,0.25);
     }
     .app-header .header-right:active { transform: scale(0.9); background: rgba(255,255,255,0.35); }
 
-    #appContainer {
-        width: 100%; max-width: 480px; margin: 0 auto; min-height: 100vh;
-        background: #f0f2f5; position: relative;
-        display: flex; flex-direction: column; padding-bottom: 80px;
+    /* ============================================================
+       CONTENT — শুধু এই অংশটি স্ক্রল হবে
+       ============================================================ */
+    .content-scroll {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        padding: 14px 14px 20px 14px;
+        scrollbar-width: none;
     }
-    .content-scroll { flex: 1; padding: 16px 14px 20px 14px; overflow-y: auto; }
+    .content-scroll::-webkit-scrollbar { display: none; }
 
-    /* DASHBOARD */
-    #dashboardScreen { display: block; }
+    /* ============================================================
+       DASHBOARD — স্ক্রল-মুক্ত গ্রিড
+       ============================================================ */
+    #dashboardScreen { display: flex; flex-direction: column; height: 100%; }
+
     .primary-big-btn {
-        width: 100%; background: #5e35b1; color: #fff; border: none;
-        border-radius: 20px; padding: 20px 22px; display: flex; align-items: center;
-        gap: 16px; font-size: 18px; font-weight: 700;
-        box-shadow: 0 6px 16px rgba(94,53,177,0.35); cursor: pointer;
+        width: 100%;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff; border: none;
+        border-radius: 18px;
+        padding: 16px 18px;
+        display: flex; align-items: center; gap: 14px;
+        font-size: 17px; font-weight: 700;
+        box-shadow: 0 6px 18px rgba(94,53,177,0.35);
+        cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
-        margin-bottom: 24px; text-align: left;
+        margin-bottom: 14px;
+        text-align: left;
+        flex-shrink: 0;
     }
-    .primary-big-btn:active { transform: scale(0.98); box-shadow: 0 3px 8px rgba(94,53,177,0.3); }
+    .primary-big-btn:active { transform: scale(0.98); box-shadow: 0 3px 10px rgba(94,53,177,0.3); }
     .primary-big-btn .icon-box {
-        width: 44px; height: 44px; background: rgba(255,255,255,0.2);
-        border-radius: 12px; display: flex; align-items: center; justify-content: center;
-        font-size: 24px;
+        width: 42px; height: 42px;
+        background: rgba(255,255,255,0.2);
+        border-radius: 12px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 22px;
     }
     .primary-big-btn .btn-text { flex: 1; }
 
-    .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 10px;
+        flex: 1;
+        min-height: 0;
+    }
     .grid-card {
-        background: #ffffff; border-radius: 16px; padding: 16px 6px; text-align: center;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.06); cursor: pointer;
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 10px 6px;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        cursor: pointer;
         transition: transform 0.15s, box-shadow 0.15s;
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        min-height: 110px; border: 1px solid rgba(0,0,0,0.02);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        border: 1px solid rgba(0,0,0,0.03);
+        min-height: 0;
+        overflow: hidden;
     }
-    .grid-card:active { transform: scale(0.96); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
-    .grid-card .card-icon { font-size: 28px; margin-bottom: 10px; display: block; line-height: 1; }
-    .grid-card .card-label { font-size: 12px; font-weight: 600; color: #444; line-height: 1.4; padding: 0 4px; }
-    .grid-card.calc-card { background: #5e35b1; color: #fff; box-shadow: 0 4px 12px rgba(94,53,177,0.3); }
-    .grid-card.calc-card .card-label { color: #fff; }
-    .grid-card.calc-card .card-icon { font-size: 30px; }
+    .grid-card:active { transform: scale(0.95); box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .grid-card .card-icon { font-size: 24px; margin-bottom: 6px; display: block; line-height: 1; }
+    .grid-card .card-label { font-size: 11px; font-weight: 600; color: #444; line-height: 1.3; padding: 0 3px; }
+    .grid-card.calc-card {
+        grid-column: span 3;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(94,53,177,0.35);
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 10px;
+    }
+    .grid-card.calc-card .card-label { color: #fff; font-size: 14px; }
+    .grid-card.calc-card .card-icon { font-size: 22px; margin: 0; }
 
+    /* বিজ্ঞাপন স্লট — ড্যাশবোর্ডে ছোট */
     .ad-slot {
-        margin: 14px 0 0 0; text-align: center; min-height: 60px;
+        margin: 12px 0 0 0;
+        text-align: center;
+        min-height: 52px;
         display: flex; align-items: center; justify-content: center;
-        overflow: hidden; background: #faf8ff;
-        border: 1px dashed #d0c4e8; border-radius: 12px; padding: 8px;
+        overflow: hidden;
+        background: #faf8ff;
+        border: 1px dashed #d0c4e8;
+        border-radius: 12px;
+        padding: 6px;
+        flex-shrink: 0;
     }
 
-    .seo-keywords-footer { font-size: 10px; color: #999; text-align: center; margin-top: 20px; line-height: 1.5; }
+    .seo-keywords-footer {
+        font-size: 9px; color: #999; text-align: center;
+        margin-top: 10px; line-height: 1.5;
+        flex-shrink: 0;
+    }
 
-    /* BOTTOM NAV */
+    /* ============================================================
+       BOTTOM NAV — ফিক্সড, সেফ-এরিয়া সাপোর্ট
+       ============================================================ */
     .bottom-nav {
-        position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
-        width: 100%; max-width: 480px; background: #5e35b1;
-        display: flex; justify-content: space-around; align-items: center;
-        padding: 8px 0 12px 0; border-radius: 24px 24px 0 0;
-        box-shadow: 0 -4px 16px rgba(0,0,0,0.15); z-index: 100;
+        flex-shrink: 0;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px)) 0;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+        z-index: 100;
+        border-radius: 20px 20px 0 0;
     }
     .nav-item {
-        display: flex; flex-direction: column; align-items: center; gap: 3px;
-        color: rgba(255,255,255,0.6); font-size: 11px; font-weight: 600;
-        cursor: pointer; transition: color 0.2s; padding: 4px 12px; border-radius: 12px;
+        display: flex; flex-direction: column; align-items: center; gap: 2px;
+        color: rgba(255,255,255,0.55);
+        font-size: 10px; font-weight: 600;
+        cursor: pointer;
+        transition: color 0.2s, transform 0.15s;
+        padding: 4px 14px; border-radius: 10px;
     }
     .nav-item.active { color: #fff; }
-    .nav-item .nav-icon { font-size: 20px; }
+    .nav-item:active { transform: scale(0.92); }
+    .nav-item .nav-icon { font-size: 18px; }
 
-    /* FEATURE SCREEN */
+    /* ============================================================
+       FEATURE SCREEN
+       ============================================================ */
     #featureScreen { display: none; }
     #featureScreen.show { display: block; }
 
     .feature-header {
-        display: flex; align-items: center; gap: 12px;
-        margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid #e0e0e0;
+        display: flex; align-items: center; gap: 10px;
+        margin-bottom: 12px; padding-bottom: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        position: sticky; top: 0;
+        background: #f0f2f5;
+        z-index: 5;
+        padding-top: 4px;
     }
     .back-btn {
-        background: #fff; color: #5e35b1; border: 1px solid #d0c4e8;
-        border-radius: 12px; padding: 8px 18px; font-size: 14px; font-weight: 600;
-        cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        transition: all 0.15s; display: flex; align-items: center; gap: 6px;
+        background: #fff; color: #5e35b1;
+        border: 1px solid #d0c4e8;
+        border-radius: 10px;
+        padding: 8px 14px;
+        font-size: 13px; font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        transition: all 0.15s;
+        display: flex; align-items: center; gap: 5px;
     }
-    .back-btn:active { transform: scale(0.96); background: #f5f0ff; }
-    .feature-header .feature-name { font-size: 18px; font-weight: 700; color: #5e35b1; }
+    .back-btn:active { transform: scale(0.95); background: #f5f0ff; }
+    .feature-header .feature-name { font-size: 16px; font-weight: 700; color: #5e35b1; }
 
     .feature-box {
-        background: #ffffff; border-radius: 20px; padding: 20px 16px;
-        display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 18px 16px;
+        display: none;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         border: 1px solid rgba(0,0,0,0.03);
+        margin-bottom: 14px;
     }
     .feature-box.active { display: block; }
-    .feature-title { font-weight: 700; font-size: 17px; color: #5e35b1; margin-bottom: 14px; text-align: center; }
-
-    .row { display: flex; flex-wrap: wrap; gap: 6px 8px; margin-bottom: 8px; align-items: center; }
-    .row label { font-size: 13px; width: 48px; color: #666; font-weight: 600; }
-    .row input {
-        flex: 1; min-width: 50px; padding: 9px 6px;
-        border: 1px solid #d0c4e8; border-radius: 10px; font-size: 14px;
-        background: #faf8ff; text-align: center; font-weight: 600;
-        color: #333; transition: border 0.15s;
+    .feature-title {
+        font-weight: 700; font-size: 16px; color: #5e35b1;
+        margin-bottom: 14px; text-align: center;
     }
-    .row input:focus { outline: none; border-color: #5e35b1; background: #fff; box-shadow: 0 0 0 3px rgba(94,53,177,0.1); }
 
-    .karat-row { display: flex; gap: 10px; flex-wrap: nowrap; margin-top: 8px; }
-    .karat-row .field { flex: 1; min-width: 0; }
-    .karat-row label { font-size: 12px; display: block; margin-bottom: 4px; color: #666; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .karat-row input { width: 100%; padding: 10px 4px; border: 1px solid #d0c4e8; border-radius: 10px; font-size: 14px; background: #faf8ff; text-align: center; font-weight: 600; color: #333; }
-    .karat-row input:focus { outline: none; border-color: #5e35b1; background: #fff; box-shadow: 0 0 0 3px rgba(94,53,177,0.1); }
+    /* ============================================================
+       ইনপুট ফিল্ড — নতুন সুন্দর বিন্যাস
+       ============================================================ */
+    .field-group {
+        background: #faf8ff;
+        border: 1px solid #e8e0f5;
+        border-radius: 14px;
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+    .field-group-title {
+        font-size: 12px;
+        color: #673ab7;
+        font-weight: 700;
+        margin-bottom: 10px;
+        display: flex; align-items: center; gap: 6px;
+    }
 
+    .input-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-bottom: 8px;
+    }
+    .input-row:last-child { margin-bottom: 0; }
+
+    .input-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .input-field label {
+        font-size: 10px;
+        color: #888;
+        font-weight: 700;
+        text-align: center;
+        letter-spacing: 0.3px;
+    }
+    .input-field input {
+        width: 100%;
+        padding: 10px 4px;
+        border: 1.5px solid #d0c4e8;
+        border-radius: 10px;
+        font-size: 15px;
+        background: #fff;
+        text-align: center;
+        font-weight: 700;
+        color: #333;
+        transition: border 0.15s, box-shadow 0.15s;
+        -moz-appearance: textfield;
+    }
+    .input-field input::-webkit-outer-spin-button,
+    .input-field input::-webkit-inner-spin-button {
+        -webkit-appearance: none; margin: 0;
+    }
+    .input-field input:focus {
+        outline: none;
+        border-color: #5e35b1;
+        background: #fff;
+        box-shadow: 0 0 0 3px rgba(94,53,177,0.12);
+    }
+
+    /* দুই-কলাম রো (টার্গেট ক্যারেট ইত্যাদির জন্য) */
+    .input-row-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+    /* সিঙ্গেল ফুল-উইডথ ইনপুট */
+    .input-full {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 8px;
+    }
+    .input-full label {
+        font-size: 11px;
+        color: #888;
+        font-weight: 700;
+    }
+    .input-full input,
+    .input-full select {
+        width: 100%;
+        padding: 12px 12px;
+        border: 1.5px solid #d0c4e8;
+        border-radius: 12px;
+        font-size: 15px;
+        background: #fff;
+        font-weight: 700;
+        color: #333;
+        transition: border 0.15s, box-shadow 0.15s;
+    }
+    .input-full input:focus,
+    .input-full select:focus {
+        outline: none;
+        border-color: #5e35b1;
+        box-shadow: 0 0 0 3px rgba(94,53,177,0.12);
+    }
+
+    /* ============================================================
+       বাটন
+       ============================================================ */
     .btn {
-        background: #5e35b1; color: #fff; border: none; padding: 14px;
-        border-radius: 14px; font-size: 16px; font-weight: 700; width: 100%;
-        margin: 14px 0 6px 0; cursor: pointer;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff; border: none;
+        padding: 14px;
+        border-radius: 14px;
+        font-size: 15px; font-weight: 700;
+        width: 100%;
+        margin: 14px 0 6px 0;
+        cursor: pointer;
         box-shadow: 0 4px 12px rgba(94,53,177,0.3);
-        transition: transform 0.15s, box-shadow 0.15s; letter-spacing: 0.3px;
+        transition: transform 0.15s, box-shadow 0.15s;
+        letter-spacing: 0.3px;
     }
     .btn:active { transform: scale(0.97); box-shadow: 0 2px 6px rgba(94,53,177,0.3); }
-    .btn-secondary { background: #7e57c2; box-shadow: 0 4px 12px rgba(126,87,194,0.3); }
+    .btn-secondary {
+        background: linear-gradient(135deg, #7e57c2 0%, #5e35b1 100%);
+        box-shadow: 0 4px 12px rgba(126,87,194,0.3);
+    }
 
+    /* ============================================================
+       রেজাল্ট বক্স
+       ============================================================ */
     .result-box {
-        background: #faf8ff; border-radius: 14px; padding: 14px;
-        font-size: 13px; line-height: 1.8; white-space: pre-wrap;
-        margin-top: 10px; border: 1px solid #e0d8f0;
-        min-height: 44px; font-weight: 600; color: #333;
+        background: #faf8ff;
+        border-radius: 14px;
+        padding: 14px;
+        font-size: 13px;
+        line-height: 1.9;
+        white-space: pre-wrap;
+        margin-top: 10px;
+        border: 1px solid #e0d8f0;
+        min-height: 44px;
+        font-weight: 600;
+        color: #333;
     }
 
     .print-btn {
         background: #546e7a; color: #fff; border: none;
-        padding: 12px 14px; border-radius: 14px; font-size: 14px;
-        font-weight: 700; cursor: pointer; margin-top: 10px; width: 100%;
-        box-shadow: 0 4px 12px rgba(84,110,122,0.3); transition: all 0.15s;
+        padding: 11px 14px;
+        border-radius: 12px;
+        font-size: 13px; font-weight: 700;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+        box-shadow: 0 4px 12px rgba(84,110,122,0.3);
+        transition: all 0.15s;
         display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .print-btn:active { transform: scale(0.97); }
-    .print-btn .p-icon { font-size: 16px; }
+    .print-btn .p-icon { font-size: 15px; }
 
+    /* ============================================================
+       প্রাইস রেজাল্ট কার্ড
+       ============================================================ */
     .price-result {
-        background: #faf8ff; border: 2px solid #5e35b1; border-radius: 16px;
-        padding: 18px; margin-top: 12px; text-align: center;
+        background: linear-gradient(135deg, #faf8ff 0%, #f0ebff 100%);
+        border: 2px solid #5e35b1;
+        border-radius: 16px;
+        padding: 18px;
+        margin-top: 12px;
+        text-align: center;
         box-shadow: 0 4px 12px rgba(94,53,177,0.1);
     }
-    .price-result .label { font-size: 13px; color: #888; margin-bottom: 4px; font-weight: 600; }
-    .price-result .amount { font-size: 28px; font-weight: 800; color: #5e35b1; letter-spacing: 0.5px; }
-    .price-result .sub-line { font-size: 12px; color: #888; margin-top: 6px; font-weight: 600; }
+    .price-result .label { font-size: 12px; color: #888; margin-bottom: 4px; font-weight: 600; }
+    .price-result .amount {
+        font-size: 26px; font-weight: 800; color: #5e35b1;
+        letter-spacing: 0.5px;
+        word-break: break-all;
+    }
+    .price-result .sub-line {
+        font-size: 11px; color: #888; margin-top: 6px; font-weight: 600;
+    }
 
-    .chart-table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); background: #fff; border: 1px solid #e0d8f0; }
-    .chart-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 320px; }
-    .chart-table thead th { background: #5e35b1; color: #fff; padding: 10px 6px; text-align: center; font-weight: 700; font-size: 12px; border-bottom: 2px solid #4527a0; position: sticky; top: 0; }
-    .chart-table tbody td { padding: 9px 6px; text-align: center; border-bottom: 1px solid #f0f0f0; font-weight: 600; color: #444; white-space: nowrap; }
+    /* ============================================================
+       চার্ট টেবিল
+       ============================================================ */
+    .chart-table-wrap {
+        overflow-x: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        background: #fff;
+        border: 1px solid #e0d8f0;
+        -webkit-overflow-scrolling: touch;
+    }
+    .chart-table-wrap::-webkit-scrollbar { height: 4px; }
+    .chart-table-wrap::-webkit-scrollbar-thumb { background: #d0c4e8; border-radius: 4px; }
+    .chart-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 320px; }
+    .chart-table thead th {
+        background: #5e35b1; color: #fff;
+        padding: 10px 6px; text-align: center;
+        font-weight: 700; font-size: 11px;
+        border-bottom: 2px solid #4527a0;
+    }
+    .chart-table tbody td {
+        padding: 8px 6px; text-align: center;
+        border-bottom: 1px solid #f0f0f0;
+        font-weight: 600; color: #444;
+        white-space: nowrap;
+    }
     .chart-table tbody tr:nth-child(even) { background: #faf8ff; }
     .chart-table tbody tr:nth-child(odd) { background: #ffffff; }
-    .chart-table tbody tr:hover { background: #f0ebff; }
-    .chart-table tbody td:first-child { font-weight: 700; color: #5e35b1; background: #f5f0ff; }
+    .chart-table tbody td:first-child {
+        font-weight: 700; color: #5e35b1; background: #f5f0ff;
+    }
     .chart-table tbody td:nth-child(2) { color: #43a047; font-weight: 700; }
-    .chart-note { margin-top: 12px; padding: 12px; background: #faf8ff; border: 1px dashed #b39ddb; border-radius: 10px; font-size: 12px; color: #555; line-height: 1.7; font-weight: 600; }
+    .chart-note {
+        margin-top: 12px; padding: 12px;
+        background: #faf8ff; border: 1px dashed #b39ddb;
+        border-radius: 10px; font-size: 11px;
+        color: #555; line-height: 1.7; font-weight: 600;
+    }
     .chart-note b { color: #5e35b1; }
 
+    /* ============================================================
+       লাইভ রেট কার্ড
+       ============================================================ */
     .live-rate-card {
-        display: block; text-decoration: none; margin-bottom: 10px;
+        display: block; text-decoration: none;
+        margin-bottom: 10px;
         background: linear-gradient(145deg, #e8f5e9, #c8e6c9);
-        border: 1px solid #a5d6a7; border-radius: 16px; padding: 18px 10px;
-        text-align: center; box-shadow: 0 4px 12px rgba(46,125,50,0.15);
+        border: 1px solid #a5d6a7;
+        border-radius: 16px;
+        padding: 18px 10px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(46,125,50,0.15);
         transition: transform 0.15s;
     }
     .live-rate-card:active { transform: scale(0.97); }
-    .live-rate-card .icon { font-size: 32px; display: block; margin-bottom: 6px; }
-    .live-rate-card .title { font-size: 16px; font-weight: 700; color: #2e7d32; }
-    .live-rate-card .sub { font-size: 12px; color: #43a047; margin-top: 4px; }
+    .live-rate-card .icon { font-size: 30px; display: block; margin-bottom: 6px; }
+    .live-rate-card .title { font-size: 15px; font-weight: 700; color: #2e7d32; }
+    .live-rate-card .sub { font-size: 11px; color: #43a047; margin-top: 4px; }
 
-    /* ABOUT */
-    .about-hero { text-align: center; padding: 20px 10px 18px 10px; background: linear-gradient(145deg, #ede7f6, #d1c4e9); border-radius: 18px; margin-bottom: 16px; }
-    .about-hero .about-logo { width: 72px; height: 72px; background: #5e35b1; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 38px; margin: 0 auto 10px auto; box-shadow: 0 6px 16px rgba(94,53,177,0.35); }
-    .about-hero h2 { font-size: 20px; color: #4527a0; font-weight: 800; margin-bottom: 4px; }
-    .about-hero .ver { font-size: 12px; color: #673ab7; font-weight: 600; }
-    .about-hero .tagline { font-size: 13px; color: #555; margin-top: 8px; font-weight: 600; }
+    /* ============================================================
+       ABOUT
+       ============================================================ */
+    .about-hero {
+        text-align: center; padding: 18px 10px 16px 10px;
+        background: linear-gradient(145deg, #ede7f6, #d1c4e9);
+        border-radius: 18px; margin-bottom: 14px;
+    }
+    .about-hero .about-logo {
+        width: 64px; height: 64px;
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 34px; margin: 0 auto 10px auto;
+        box-shadow: 0 6px 16px rgba(94,53,177,0.35);
+    }
+    .about-hero h2 { font-size: 19px; color: #4527a0; font-weight: 800; margin-bottom: 4px; }
+    .about-hero .ver { font-size: 11px; color: #673ab7; font-weight: 600; }
+    .about-hero .tagline { font-size: 12px; color: #555; margin-top: 8px; font-weight: 600; }
 
-    .about-section { background: #fff; border-radius: 16px; padding: 16px; margin-bottom: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03); }
-    .about-section h3 { font-size: 15px; color: #5e35b1; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; font-weight: 700; }
-    .about-section p { font-size: 13px; color: #555; line-height: 1.8; font-weight: 500; }
+    .about-section {
+        background: #fff; border-radius: 16px;
+        padding: 14px; margin-bottom: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        border: 1px solid rgba(0,0,0,0.03);
+    }
+    .about-section h3 {
+        font-size: 14px; color: #5e35b1; margin-bottom: 10px;
+        display: flex; align-items: center; gap: 8px; font-weight: 700;
+    }
+    .about-section p { font-size: 12px; color: #555; line-height: 1.8; font-weight: 500; }
     .about-section ul { list-style: none; padding: 0; margin: 0; }
-    .about-section ul li { font-size: 13px; color: #444; line-height: 1.9; padding: 4px 0 4px 22px; position: relative; font-weight: 500; }
-    .about-section ul li::before { content: '✔'; position: absolute; left: 0; color: #5e35b1; font-weight: 700; }
-    .about-info-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e0d8f0; font-size: 13px; }
+    .about-section ul li {
+        font-size: 12px; color: #444; line-height: 1.9;
+        padding: 3px 0 3px 20px; position: relative; font-weight: 500;
+    }
+    .about-section ul li::before {
+        content: '✔'; position: absolute; left: 0;
+        color: #5e35b1; font-weight: 700;
+    }
+    .about-info-row {
+        display: flex; justify-content: space-between;
+        padding: 7px 0; border-bottom: 1px dashed #e0d8f0;
+        font-size: 12px;
+    }
     .about-info-row:last-child { border-bottom: none; }
     .about-info-row .k { color: #666; font-weight: 600; }
     .about-info-row .v { color: #5e35b1; font-weight: 700; text-align: right; }
     .about-info-row .v a { color: #5e35b1; text-decoration: none; }
 
-    .about-disclaimer { background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px; padding: 12px 14px; font-size: 12px; color: #795548; line-height: 1.7; font-weight: 600; }
+    .about-disclaimer {
+        background: #fff8e1; border: 1px solid #ffe082;
+        border-radius: 12px; padding: 12px 14px;
+        font-size: 11px; color: #795548;
+        line-height: 1.7; font-weight: 600;
+    }
     .about-disclaimer b { color: #e65100; }
 
-    .about-footer-note { text-align: center; font-size: 12px; color: #888; margin: 18px 0 6px 0; font-weight: 600; line-height: 1.7; }
+    .about-footer-note {
+        text-align: center; font-size: 11px; color: #888;
+        margin: 16px 0 6px 0; font-weight: 600; line-height: 1.7;
+    }
 
-    /* CALCULATOR */
-    .calculator { width: 100%; max-width: 360px; margin: 0 auto; background: #fff; border-radius: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.08); overflow: hidden; padding-bottom: 8px; border: 1px solid #e0d8f0; }
-    .calculator .display-container { background: #faf8ff; padding: 20px 16px 10px 16px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 110px; border-bottom: 1px solid #e0d8f0; }
-    .calculator .expression { font-size: 13px; color: #999; text-align: right; min-height: 18px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .calculator .result { font-size: 36px; font-weight: 700; color: #333; text-align: right; word-wrap: break-word; word-break: break-all; line-height: 1.1; }
-    .calculator .memory-row { display: grid; grid-template-columns: repeat(6, 1fr); padding: 6px 10px; gap: 4px; }
-    .calculator .memory-btn { background: transparent; border: none; font-size: 12px; color: #888; padding: 8px 0; cursor: pointer; border-radius: 8px; transition: all 0.15s; font-weight: 600; }
+    /* ============================================================
+       CALCULATOR
+       ============================================================ */
+    .calculator {
+        width: 100%; max-width: 360px;
+        margin: 0 auto; background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        overflow: hidden; padding-bottom: 8px;
+        border: 1px solid #e0d8f0;
+    }
+    .calculator .display-container {
+        background: linear-gradient(135deg, #faf8ff 0%, #f0ebff 100%);
+        padding: 20px 16px 10px 16px;
+        display: flex; flex-direction: column; justify-content: flex-end;
+        min-height: 110px;
+        border-bottom: 1px solid #e0d8f0;
+    }
+    .calculator .expression {
+        font-size: 12px; color: #999; text-align: right;
+        min-height: 16px; margin-bottom: 4px;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .calculator .result {
+        font-size: 36px; font-weight: 700; color: #333;
+        text-align: right; word-wrap: break-word; word-break: break-all;
+        line-height: 1.1;
+    }
+    .calculator .memory-row {
+        display: grid; grid-template-columns: repeat(6, 1fr);
+        padding: 6px 10px; gap: 4px;
+    }
+    .calculator .memory-btn {
+        background: transparent; border: none;
+        font-size: 11px; color: #888; padding: 8px 0;
+        cursor: pointer; border-radius: 8px;
+        transition: all 0.15s; font-weight: 600;
+    }
     .calculator .memory-btn:hover { background: #f0ebff; color: #5e35b1; }
-    .calculator .keypad { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 0 10px 8px 10px; }
-    .calculator button { border: 1px solid #e0d8f0; background: #fff; color: #333; font-size: 16px; padding: 15px 0; border-radius: 12px; cursor: pointer; transition: all 0.1s ease; outline: none; font-weight: 600; }
-    .calculator button:active { background: #f0ebff; transform: scale(0.96); }
-    .calculator .operator { color: #5e35b1; background: #f5f0ff; font-size: 18px; }
-    .calculator .equal-btn { background: #5e35b1; color: #fff; border: none; font-size: 20px; box-shadow: 0 4px 12px rgba(94,53,177,0.3); }
-    .calculator .equal-btn:active { background: #4527a0; transform: scale(0.96); }
+    .calculator .keypad {
+        display: grid; grid-template-columns: repeat(4, 1fr);
+        gap: 6px; padding: 0 10px 8px 10px;
+    }
+    .calculator button {
+        border: 1px solid #e0d8f0; background: #fff;
+        color: #333; font-size: 16px; padding: 14px 0;
+        border-radius: 12px; cursor: pointer;
+        transition: all 0.1s ease; outline: none; font-weight: 600;
+    }
+    .calculator button:active { background: #f0ebff; transform: scale(0.95); }
+    .calculator .operator {
+        color: #5e35b1; background: #f5f0ff; font-size: 17px;
+    }
+    .calculator .equal-btn {
+        background: linear-gradient(135deg, #5e35b1 0%, #4527a0 100%);
+        color: #fff; border: none; font-size: 20px;
+        box-shadow: 0 4px 12px rgba(94,53,177,0.3);
+    }
+    .calculator .equal-btn:active { transform: scale(0.95); }
 
+    /* ============================================================
+       TOAST
+       ============================================================ */
     #toast {
         position: fixed; top: 20px; left: 50%;
         transform: translateX(-50%) translateY(-100px);
-        background: #323232; color: white; padding: 12px 24px;
-        border-radius: 12px; font-size: 14px; font-weight: 600;
-        z-index: 99999; transition: transform 0.3s ease;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.2); max-width: 90%; text-align: center;
+        background: #323232; color: white;
+        padding: 12px 24px; border-radius: 12px;
+        font-size: 13px; font-weight: 600;
+        z-index: 99999;
+        transition: transform 0.3s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        max-width: 90%; text-align: center;
     }
     #toast.show { transform: translateX(-50%) translateY(0); }
     #toast.success { background: #43a047; }
     #toast.error { background: #e53935; }
     #toast.info { background: #1e88e5; }
 
+    /* ============================================================
+       PRINT
+       ============================================================ */
     @page { size: A5 landscape; margin: 0; }
     @media print {
         body * { visibility: hidden; }
         #printArea, #printArea * { visibility: visible; }
-        #printArea { position: absolute; left: 0; top: 0; width: 100%; padding: 27.94mm 10mm 10mm 10mm; background: #fff; box-sizing: border-box; }
-        .print-header { text-align: center; margin-bottom: 10px; border-bottom: 2px solid #b8860b; padding-bottom: 6px; }
+        #printArea {
+            position: absolute; left: 0; top: 0;
+            width: 100%; padding: 27.94mm 10mm 10mm 10mm;
+            background: #fff; box-sizing: border-box;
+        }
+        .print-header {
+            text-align: center; margin-bottom: 10px;
+            border-bottom: 2px solid #b8860b; padding-bottom: 6px;
+        }
         .print-header h2 { color: #b8860b; font-size: 20px; }
         .print-header .sub { font-size: 11px; color: #666; margin-top: 3px; }
-        .print-content { font-size: 14px; line-height: 1.9; white-space: pre-wrap; color: #222; }
-        .print-footer { margin-top: 18px; padding-top: 8px; border-top: 1px dashed #999; font-size: 11px; color: #666; text-align: center; }
+        .print-content {
+            font-size: 14px; line-height: 1.9;
+            white-space: pre-wrap; color: #222;
+        }
+        .print-footer {
+            margin-top: 18px; padding-top: 8px;
+            border-top: 1px dashed #999;
+            font-size: 11px; color: #666; text-align: center;
+        }
     }
 
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
     @media (min-width: 600px) {
         #appContainer { max-width: 600px; }
-        .dashboard-grid { grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-        .grid-card { min-height: 130px; padding: 20px 8px; }
-        .grid-card .card-icon { font-size: 34px; }
-        .grid-card .card-label { font-size: 14px; }
-        .bottom-nav { max-width: 600px; }
+        .dashboard-grid { gap: 14px; }
+        .grid-card .card-icon { font-size: 28px; }
+        .grid-card .card-label { font-size: 12px; }
+    }
+
+    /* খুব ছোট স্ক্রিনের জন্য */
+    @media (max-height: 640px) {
+        .grid-card .card-icon { font-size: 20px; margin-bottom: 4px; }
+        .grid-card .card-label { font-size: 10px; }
+        .primary-big-btn { padding: 12px 16px; margin-bottom: 10px; }
+        .primary-big-btn .icon-box { width: 36px; height: 36px; font-size: 18px; }
     }
 </style>
 </head>
@@ -458,6 +860,7 @@
 
 <div id="appContainer">
 
+    <!-- ===== HEADER ===== -->
     <header class="app-header">
         <div class="header-left">
             <div class="logo-circle">🪙</div>
@@ -469,8 +872,10 @@
         <div class="header-right" onclick="shareApp()" title="Share App">🔗</div>
     </header>
 
+    <!-- ===== CONTENT ===== -->
     <div class="content-scroll">
 
+        <!-- DASHBOARD -->
         <div id="dashboardScreen">
             <button class="primary-big-btn" onclick="openFeature('price')">
                 <span class="icon-box">৳</span>
@@ -502,13 +907,13 @@
                     <span class="card-icon">📈</span>
                     <span class="card-label">ক্যারেট খাদ<br>চার্ট</span>
                 </div>
-                <div class="grid-card calc-card" onclick="openFeature('calc')" style="grid-column: span 3; flex-direction: row; justify-content: center; gap: 12px; min-height: 70px; padding: 14px;">
-                    <span class="card-icon" style="margin:0;">🔢</span>
-                    <span class="card-label" style="font-size:15px;">ক্যালকুলেটর</span>
+                <div class="grid-card calc-card" onclick="openFeature('calc')">
+                    <span class="card-icon">🔢</span>
+                    <span class="card-label">ক্যালকুলেটর</span>
                 </div>
             </div>
 
-            <!-- ===== Banner 320x50 (ড্যাশবোর্ড) ===== -->
+            <!-- Banner 320x50 -->
             <div class="ad-slot" id="adSlotDashboard">
                 <iframe
                     title="ad-320x50"
@@ -539,6 +944,7 @@
             </div>
         </div>
 
+        <!-- FEATURE SCREEN -->
         <div id="featureScreen">
             <div class="feature-header">
                 <button class="back-btn" onclick="goBack()">← Back</button>
@@ -548,22 +954,38 @@
             <!-- MAIN -->
             <div id="feature-main" class="feature-box">
                 <div class="feature-title">🪙 পাকা/জমা অ্যাডজাস্ট</div>
-                <div style="font-size:13px; color:#666; margin-bottom:4px;">মোট ওজন (Total Weight)</div>
-                <div class="row"><label>ভরি</label><input id="tvori" type="number" value="1" step="any" /></div>
-                <div class="row"><label>আনা</label><input id="tana" type="number" value="0" step="any" /></div>
-                <div class="row"><label>রতি</label><input id="troti" type="number" value="0" step="any" /></div>
-                <div class="row"><label>পয়েন্ট</label><input id="tpoint" type="number" value="0" step="any" /></div>
 
-                <div style="font-size:13px; color:#666; margin:6px 0 4px 0;">পেইন্ট/জয়েন্ট ওজন (Joint Weight)</div>
-                <div class="row"><label>ভরি</label><input id="jvori" type="number" value="0" step="any" /></div>
-                <div class="row"><label>আনা</label><input id="jana" type="number" value="4" step="any" /></div>
-                <div class="row"><label>রতি</label><input id="jroti" type="number" value="0" step="any" /></div>
-                <div class="row"><label>পয়েন্ট</label><input id="jpoint" type="number" value="0" step="any" /></div>
-
-                <div class="karat-row" style="margin-top:6px;">
-                    <div class="field"><label>Body Karat</label><input id="bodyKarat" type="number" value="00.00" step="any" /></div>
-                    <div class="field"><label>Joint Karat</label><input id="jointKarat" type="number" value="00.00" step="any" /></div>
+                <div class="field-group">
+                    <div class="field-group-title">⚖️ মোট ওজন (Total Weight)</div>
+                    <div class="input-row">
+                        <div class="input-field"><label>ভরি</label><input id="tvori" type="number" value="1" step="any" /></div>
+                        <div class="input-field"><label>আনা</label><input id="tana" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>রতি</label><input id="troti" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>পয়েন্ট</label><input id="tpoint" type="number" value="0" step="any" /></div>
+                    </div>
                 </div>
+
+                <div class="field-group">
+                    <div class="field-group-title">🔗 পেইন্ট/জয়েন্ট ওজন (Joint Weight)</div>
+                    <div class="input-row">
+                        <div class="input-field"><label>ভরি</label><input id="jvori" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>আনা</label><input id="jana" type="number" value="4" step="any" /></div>
+                        <div class="input-field"><label>রতি</label><input id="jroti" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>পয়েন্ট</label><input id="jpoint" type="number" value="0" step="any" /></div>
+                    </div>
+                </div>
+
+                <div class="input-row-2">
+                    <div class="input-full" style="margin-bottom:0;">
+                        <label>Body Karat</label>
+                        <input id="bodyKarat" type="number" value="00.00" step="any" />
+                    </div>
+                    <div class="input-full" style="margin-bottom:0;">
+                        <label>Joint Karat</label>
+                        <input id="jointKarat" type="number" value="00.00" step="any" />
+                    </div>
+                </div>
+
                 <button class="btn" onclick="calculateMain()">📊 গণনা করুন</button>
                 <div class="result-box" id="mainResult">ফলাফল দেখাবে...</div>
                 <button class="print-btn" onclick="printResult('main')">
@@ -574,11 +996,22 @@
             <!-- PURE -->
             <div id="feature-pure" class="feature-box">
                 <div class="feature-title">✨ পাকা (২৪K) → টার্গেট ক্যারেট</div>
-                <div class="row"><label>ভরি</label><input id="pVori" type="number" value="0" step="any" /></div>
-                <div class="row"><label>আনা</label><input id="pAna" type="number" value="14" step="any" /></div>
-                <div class="row"><label>রতি</label><input id="pRoti" type="number" value="0" step="any" /></div>
-                <div class="row"><label>পয়েন্ট</label><input id="pPoint" type="number" value="0" step="any" /></div>
-                <div class="row"><label>টার্গেট</label><input id="pureTarget" type="number" value="21" step="any" /></div>
+
+                <div class="field-group">
+                    <div class="field-group-title">✨ পাকা সোনার ওজন</div>
+                    <div class="input-row">
+                        <div class="input-field"><label>ভরি</label><input id="pVori" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>আনা</label><input id="pAna" type="number" value="14" step="any" /></div>
+                        <div class="input-field"><label>রতি</label><input id="pRoti" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>পয়েন্ট</label><input id="pPoint" type="number" value="0" step="any" /></div>
+                    </div>
+                </div>
+
+                <div class="input-full">
+                    <label>🎯 টার্গেট ক্যারেট</label>
+                    <input id="pureTarget" type="number" value="21" step="any" />
+                </div>
+
                 <button class="btn btn-secondary" onclick="calculatePureToTarget()">🧪 হিসাব করুন</button>
                 <div class="result-box" id="pureResult">ফলাফল দেখাবে...</div>
                 <button class="print-btn" onclick="printResult('pure')">
@@ -589,12 +1022,27 @@
             <!-- ANY -->
             <div id="feature-any" class="feature-box">
                 <div class="feature-title">🔄 যেকোনো ক্যারেট → টার্গেট</div>
-                <div class="row"><label>বর্তমান K</label><input id="currentKarat" type="number" value="00" step="any" /></div>
-                <div class="row"><label>ভরি</label><input id="cVori" type="number" value="1" step="any" /></div>
-                <div class="row"><label>আনা</label><input id="cAna" type="number" value="0" step="any" /></div>
-                <div class="row"><label>রতি</label><input id="cRoti" type="number" value="0" step="any" /></div>
-                <div class="row"><label>পয়েন্ট</label><input id="cPoint" type="number" value="0" step="any" /></div>
-                <div class="row"><label>টার্গেট K</label><input id="targetKaratAny" type="number" value="21" step="any" /></div>
+
+                <div class="input-full">
+                    <label>বর্তমান ক্যারেট (K)</label>
+                    <input id="currentKarat" type="number" value="00" step="any" />
+                </div>
+
+                <div class="field-group">
+                    <div class="field-group-title">⚖️ বর্তমান ওজন</div>
+                    <div class="input-row">
+                        <div class="input-field"><label>ভরি</label><input id="cVori" type="number" value="1" step="any" /></div>
+                        <div class="input-field"><label>আনা</label><input id="cAna" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>রতি</label><input id="cRoti" type="number" value="0" step="any" /></div>
+                        <div class="input-field"><label>পয়েন্ট</label><input id="cPoint" type="number" value="0" step="any" /></div>
+                    </div>
+                </div>
+
+                <div class="input-full">
+                    <label>🎯 টার্গেট ক্যারেট (K)</label>
+                    <input id="targetKaratAny" type="number" value="21" step="any" />
+                </div>
+
                 <button class="btn btn-secondary" onclick="calculateAnyToTarget()">🔄 হিসাব করুন</button>
                 <div class="result-box" id="anyResult">ফলাফল দেখাবে...</div>
                 <button class="print-btn" onclick="printResult('any')">
@@ -605,8 +1053,17 @@
             <!-- GRAM -->
             <div id="feature-gram" class="feature-box">
                 <div class="feature-title">⚖️ গ্রাম ↔ ভরি-আনা-রতি-পয়েন্ট</div>
-                <div class="row"><label>গ্রাম</label><input id="gramInput" type="number" value="0.0" step="any" oninput="convertGramToVori()" /></div>
-                <div class="row"><label>ভরি</label><input id="voriOutput" type="text" value="0-0-0-0" oninput="convertVoriToGram()" /></div>
+
+                <div class="input-full">
+                    <label>⚖️ গ্রাম (Gram)</label>
+                    <input id="gramInput" type="number" value="0.0" step="any" oninput="convertGramToVori()" />
+                </div>
+
+                <div class="input-full">
+                    <label>🪙 ভরি-আনা-রতি-পয়েন্ট (Vori-Ana-Roti-Point)</label>
+                    <input id="voriOutput" type="text" value="0-0-0-0" oninput="convertVoriToGram()" />
+                </div>
+
                 <button class="print-btn" onclick="printResult('gram')">
                     <span class="p-icon">🖨️</span> ফলাফল প্রিন্ট করুন
                 </button>
@@ -616,30 +1073,34 @@
             <div id="feature-price" class="feature-box">
                 <div class="feature-title">💰 দাম / মূল্য হিসাব</div>
 
-                <div style="font-size:13px; color:#666; margin-bottom:4px;">প্রতি ভরির দাম (৳)</div>
-                <div class="row">
-                    <label>৳</label>
+                <div class="input-full">
+                    <label>💵 প্রতি ভরির দাম (৳)</label>
                     <input id="pricePerVori" type="number" value="210000" step="any" oninput="calculatePrice()" />
                 </div>
 
-                <div style="font-size:13px; color:#666; margin:8px 0 4px 0;">ওজন (Weight)</div>
-                <div class="row"><label>ভরি</label><input id="prVori" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
-                <div class="row"><label>আনা</label><input id="prAna" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
-                <div class="row"><label>রতি</label><input id="prRoti" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
-                <div class="row"><label>পয়েন্ট</label><input id="prPoint" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
-
-                <div style="font-size:13px; color:#666; margin:8px 0 4px 0;">মজুরি (Labor / Making Charge)</div>
-                <div class="row">
-                    <label>৳</label>
-                    <input id="laborCost" type="number" value="0" step="any" oninput="calculatePrice()" />
+                <div class="field-group">
+                    <div class="field-group-title">⚖️ ওজন (Weight)</div>
+                    <div class="input-row">
+                        <div class="input-field"><label>ভরি</label><input id="prVori" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
+                        <div class="input-field"><label>আনা</label><input id="prAna" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
+                        <div class="input-field"><label>রতি</label><input id="prRoti" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
+                        <div class="input-field"><label>পয়েন্ট</label><input id="prPoint" type="number" value="0" step="any" oninput="calculatePrice()" /></div>
+                    </div>
                 </div>
-                <div class="row" style="margin-bottom:6px;">
-                    <label style="width:auto; font-size:12px;">টাইপ</label>
-                    <select id="laborType" onchange="calculatePrice()"
-                            style="flex:1; padding:8px 4px; border:1px solid #d0c4e8; border-radius:10px; font-size:14px; background:#faf8ff; color:#333; text-align:center; font-weight:600;">
-                        <option value="perVori" selected>প্রতি ভরি (৳)</option>
-                        <option value="fixed">ফিক্সড (৳)</option>
-                    </select>
+
+                <div class="field-group">
+                    <div class="field-group-title">🛠️ মজুরি (Labor / Making Charge)</div>
+                    <div class="input-full" style="margin-bottom:8px;">
+                        <label>৳ পরিমাণ</label>
+                        <input id="laborCost" type="number" value="0" step="any" oninput="calculatePrice()" />
+                    </div>
+                    <div class="input-full" style="margin-bottom:0;">
+                        <label>টাইপ</label>
+                        <select id="laborType" onchange="calculatePrice()">
+                            <option value="perVori" selected>প্রতি ভরি (৳)</option>
+                            <option value="fixed">ফিক্সড (৳)</option>
+                        </select>
+                    </div>
                 </div>
 
                 <button class="btn" onclick="calculatePrice()">💰 দাম দেখুন</button>
@@ -712,8 +1173,8 @@
 
             <!-- LIVE RATE -->
             <div id="feature-liveRate" class="feature-box">
-                <div class="feature-title">📈 আজকের সোনার দর (Gold Price Today)</div>
-                <div style="font-size:13px; color:#666; margin-bottom:10px; text-align:center;">
+                <div class="feature-title">📈 আজকের সোনার দর</div>
+                <div style="font-size:12px; color:#666; margin-bottom:10px; text-align:center;">
                     সর্বশেষ সোনার দর দেখতে নিচের লিংকে ক্লিক করুন
                 </div>
                 <a href="https://bajushub.com/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
@@ -723,11 +1184,10 @@
                         <div class="sub">আজকের সোনা ও রুপার দাম (৳)</div>
                     </div>
                 </a>
-                <div style="background: #faf8ff; border: 1px dashed #b39ddb; border-radius: 10px; padding: 10px; font-size: 12px; color: #666; text-align: center; margin-top: 10px;">
+                <div style="background: #faf8ff; border: 1px dashed #b39ddb; border-radius: 10px; padding: 10px; font-size: 11px; color: #666; text-align: center; margin-top: 10px;">
                     💡 দর প্রায় প্রতিদিনই পরিবর্তন হয়।
                 </div>
 
-                <!-- ===== Banner 728x90 (Live Rate) ===== -->
                 <div class="ad-slot" style="margin-top:12px;">
                     <iframe
                         title="ad-728x90"
@@ -756,7 +1216,7 @@
 
             <!-- ABOUT -->
             <div id="feature-about" class="feature-box">
-                <div class="feature-title">ℹ️ অ্যাপ সম্পর্কে (About)</div>
+                <div class="feature-title">ℹ️ অ্যাপ সম্পর্কে</div>
 
                 <div class="about-hero">
                     <div class="about-logo">🪙</div>
@@ -897,7 +1357,7 @@
         </div>
     </div>
 
-    <!-- BOTTOM NAV -->
+    <!-- ===== BOTTOM NAV ===== -->
     <nav class="bottom-nav">
         <div class="nav-item active" id="navHome" onclick="goBack()">
             <span class="nav-icon">🏠</span>
@@ -916,7 +1376,7 @@
 </div>
 
 <!-- ============================================================
-     SOCIAL BAR (গ্লোবাল, শুধু একবার)
+     SOCIAL BAR (গ্লোবাল)
      ============================================================ -->
 <script>
 (function() {
@@ -1026,45 +1486,35 @@
         t._timer = setTimeout(() => { t.className = ''; }, duration);
     }
 
-    // ============================================================
-    // SHARE APP — সরাসরি শেয়ার মেনু (WhatsApp, Messenger, FB, Telegram ...)
-    // ============================================================
     function shareApp() {
         const shareUrl = 'https://goldadjustment2.vercel.app/';
         const shareText = '🇧🇩 Gold Adjustment — সোনার হিসাব ও ক্যারেট ক্যালকুলেটর\n\n' +
                           'আজকের সোনার দাম, ক্যারেট হিসাব, ভরি-আনা-রতি, মজুরি হিসাব — সব এক অ্যাপে!\n\n' +
                           'সম্পূর্ণ ফ্রি ও অফলাইনেও কাজ করে 👇';
 
-        // মোবাইল/আধুনিক ব্রাউজারে native share sheet খুলবে
         if (navigator.share) {
             navigator.share({
                 title: 'Gold Adjustment — সোনার হিসাব অ্যাপ',
                 text: shareText,
                 url: shareUrl
             })
-            .then(() => {
-                console.log('[Share] Success');
-            })
+            .then(() => { console.log('[Share] Success'); })
             .catch((err) => {
-                // ইউজার cancel করলে চুপ থাকি, অন্যথায় fallback
                 if (err && err.name !== 'AbortError') {
                     console.warn('Share failed:', err);
                     shareViaWhatsApp(shareText, shareUrl);
                 }
             });
         } else {
-            // Fallback: সরাসরি WhatsApp শেয়ার (মোবাইল/ডেস্কটপ)
             shareViaWhatsApp(shareText, shareUrl);
         }
     }
 
     function shareViaWhatsApp(text, url) {
-        // WhatsApp এ সরাসরি শেয়ার — মোবাইলে WhatsApp অ্যাপ, ডেস্কটপে WhatsApp Web খুলবে
         const waUrl = 'https://wa.me/?text=' + encodeURIComponent(text + '\n' + url);
         try {
             window.open(waUrl, '_blank', 'noopener');
         } catch (e) {
-            // শেষ fallback: কপি
             fallbackCopy(text + '\n' + url);
         }
     }
@@ -1143,7 +1593,7 @@
 
     function showDashboard(pushState = true) {
         currentScreen = 'dashboard';
-        document.getElementById('dashboardScreen').style.display = 'block';
+        document.getElementById('dashboardScreen').style.display = 'flex';
         document.getElementById('featureScreen').classList.remove('show');
         updateBottomNav('dashboard');
         if (pushState) pushHistoryState('dashboard');
